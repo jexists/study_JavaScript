@@ -20,6 +20,7 @@ h2 {
 }
 .word_list li.red {
   color: #f00;
+  font-size: 5rem;
 }
 
 /* .word_list li::after {

@@ -34,6 +34,7 @@ function onWordChain(first, next_word) {
       let li = document.createElement('li');
       li.classList.add('red');
       li.append('실패');
+      textInput.disabled = true;
       document.querySelector('.word_list').append(li);
     }
     wordChninGo = false;
