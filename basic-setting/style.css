@@ -1,0 +1,16 @@
+@charset "UFT-8";
+
+* {
+  /* margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: rgba(255, 255, 255, 1); */
+}
+body {
+  height: 100vh;
+  background-color: #2b2b2b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
