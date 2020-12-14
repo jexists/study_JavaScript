@@ -4,6 +4,12 @@ let first_word = "";
 let next_word = "";
 let wordChninGo = true;
 const textInput = document.getElementById("word_type");
+const startText = document.querySelector(".start");
+
+setTimeout(()=> {
+  startText.style.display = 'none';
+  textInput.disabled = false;
+},1000)
 
 textInput.addEventListener('keypress', (e) => {
   // keypress: 영어로 쓸경우 안되고 한국어만 가능
