@@ -41,9 +41,9 @@ let elemCanvas,
     }
   }],
 
-  elemBody = document.body;
+elemBody = document.body;
 elemCanvas = document.getElementById('cover-canvas'),
-  context = elemCanvas.getContext('2d');
+context = elemCanvas.getContext('2d');
 elemVideo = document.getElementById('video');
 
 init = function () {
@@ -85,14 +85,35 @@ resizeHandler = function () {
   totalScrollHeight += windowHeight;
 
   elemBody.style.height = totalScrollHeight + 'px';
-  elemCanvas.window = canvasWidth = windowWidth * 2;
+  elemCanvas.width = canvasWidth = windowWidth * 2;
   elemCanvas.height = canvasHeight = windowHeight * 2;
   // * 2 => 캔버스를 고해상도로 만들고 싶어서
-  elemCanvas.style.window = windowWidth + 'px';
+  elemCanvas.style.width = windowWidth + 'px';
   elemCanvas.style.height = windowHeight + 'px';
 };
 
-render = function () {
+scrollHandler = function() {
+  scrollY = window.pageYOffset;
+
+  console.log(scrollY);
+  if(scrollY < 0 || scrollY > (totalScrollHeight - windowHeight)) {
+    return;
+  }
+
+  if(scrollY > pixelDuration + prevDurations) {
+    prevDurations += pixelDuration;
+    currentKeyframe++;
+  } else if (scrollY < prevDurations) {
+    currentKeyframe--;
+    prevDurations -= pixelDuration;
+  }
+
+  relativeScrollY = scrollY - pixelDuration;
+
+  render();
+}
+
+render = function() {
   let videoScale, triangleMove, rectangleMove;
 
   if (keyframes[currentKeyframe]) {
@@ -103,7 +124,11 @@ render = function () {
     return;
   }
 
+  // console.log(videoScale);
   elemVideo.style.transform = `scale(${videoScale})`;
+  // elemVideo.style.transform = 'scale(1)';
+
+  context.clearRect(0, 0, canvasWidth, canvasHeight);
   if (elemPhone) {
     drawCanvas(videoScale, triangleMove, rectangleMove);
   };
@@ -123,31 +148,32 @@ drawCanvas = function (videoScale, triangleMove, rectangleMove) {
   context.translate((canvasWidth - phoneWidth * videoScale) * 0.5, (canvasHeight - phoneHeight * videoScale) * 0.5);
   context.drawImage(elemPhone, 0, 0, phoneWidth * videoScale, phoneHeight * videoScale);
   context.restore();
-  context.fillStyle = 'black';
+  context.fillStyle = '#2b2b2b';
+  // context.fillStyle = 'black';
 
-  context.fillStyle = 'red';
+  // context.fillStyle = 'red';
 
   //  위 삼각형
   context.beginPath();
-  context.moveTo(canvasWidth * 0.5 - 1500, triangleMove - 1700);
+  context.moveTo(canvasWidth * 0.5 - 1500, -triangleMove - 1700);
   context.lineTo(canvasWidth * 0.5, canvasHeight * 0.5 - 150 - triangleMove);
-  context.lineTo(canvasWidth * 0.5 + 1500, canvasHeight - triangleMove - 1700);
-  context.lineTo(canvasWidth * 0.5 - 1500, canvasHeight - triangleMove - 1700);
+  context.lineTo(canvasWidth * 0.5 + 1500, -triangleMove - 1700);
+  context.lineTo(canvasWidth * 0.5 - 1500, -triangleMove - 1700);
   context.fill();
   context.closePath();
 
-  context.fillStyle = 'blue'
+  // context.fillStyle = 'blue'
 
   //  아래 삼각형
   context.beginPath();
-  context.moveTo(canvasWidth * 0.5 - 1500 + canvasHeight + triangleMove, + 1700);
+  context.moveTo(canvasWidth * 0.5 - 1500, canvasHeight + triangleMove + 1700);
   context.lineTo(canvasWidth * 0.5, canvasHeight * 0.5 + 150 + triangleMove);
-  context.lineTo(canvasWidth * 0.5 + 1500, canvasHeight + triangleMove - 1700);
-  context.lineTo(canvasWidth * 0.5 - 1500, canvasHeight + triangleMove - 1700);
+  context.lineTo(canvasWidth * 0.5 + 1500, canvasHeight + triangleMove + 1700);
+  context.lineTo(canvasWidth * 0.5 - 1500, canvasHeight + triangleMove + 1700);
   context.fill();
   context.closePath();
 
-  context.fillStyle = 'yello'
+  // context.fillStyle = 'yello'
 
   //  왼쪽 삼각형
   context.beginPath();
@@ -158,7 +184,7 @@ drawCanvas = function (videoScale, triangleMove, rectangleMove) {
   context.fill();
   context.closePath();
 
-  context.fillStyle = 'green'
+  // context.fillStyle = 'green'
 
   //  오른쪽 삼각형
   context.beginPath();
@@ -169,7 +195,7 @@ drawCanvas = function (videoScale, triangleMove, rectangleMove) {
   context.fill();
   context.closePath();
 
-  context.fillStyle = 'blue'
+  // context.fillStyle = 'blue'
   // box 상하
   context.fillRect(0, canvasHeight * 0.5 - 2600 - rectangleMove, canvasWidth, 2000)
   context.fillRect(0, canvasHeight * 0.5 + 600 + rectangleMove, canvasWidth, 2000)
