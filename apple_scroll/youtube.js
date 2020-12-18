@@ -135,6 +135,7 @@ render = function () {
 };
 
 calcAnimationValue = function (values) {
+  console.log('??', (relativeScrollY / pixelDuration) * (values[1] - values[0]) + values[0]);
   return (relativeScrollY / pixelDuration) * (values[1] - values[0]) + values[0];
 };
 

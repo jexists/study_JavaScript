@@ -127,6 +127,8 @@ render = function() {
   }
 
 
+  console.log(keyframes[currentKeyframe].animationValues.videoScale);
+  console.log(videoScale);
   // elemVideo.style.transform = `scale(${videoScale})`;
   elemVideo.style.transform = 'scale(' + videoScale + ')';
   // elemVideo.style.transform = 'scale(1)';
@@ -139,7 +141,8 @@ render = function() {
 };
 
 calcAnimationValue = function (values) {
-  return (relativeScrollY / pixelDuration) * (values[1] - values[0] + values[0]);
+  console.log('??', (relativeScrollY / pixelDuration) * (values[1] - values[0] + values[0]));
+  return (relativeScrollY / pixelDuration) * (values[1] - values[0]) + values[0];
 };
 
 drawCanvas = function (videoScale, triangleMove, rectangleMove) {
