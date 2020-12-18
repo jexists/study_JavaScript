@@ -1,9 +1,12 @@
 console.log('스크립트 연결 완료!')
 
-var elemCanvas,
+// 변수선언 
+let elemCanvas,
   elemVideo,
   elemPhone,
+  elemBody,
   context,
+
   windowWidth = 0,  //브라우저 넓이
   windowHeight = 0, //브라우저 높이
   canvasWidth = 0,  //캔버스 넓이 (브라우저 폭에 맞춤)
@@ -12,13 +15,11 @@ var elemCanvas,
   relativeScrollY = 0,  //각 키프레임에서 사용하는 상대적인 스크롤 위치
   prevDurations = 0,  //이전 키프레임까지의 duration
   totalScrollHeight = 0,
-  //스크롤을 할 수 있는 범위/전체 높이 (body의 높이)
-  //스크롤 높이를 작게 하면 애니메이션을 빠르게 재생
-  //스크롤 높이를 높게 하면 애니메이션을 느리게 재생
   currentKeyframe = 0,  //현재 키프레임(0,1)
   phoneWidth = 1380,  //아이폰 이미지 기본 넓이
   phoneHeight = 3000, //아이폰 이미지 기본 높이
 
+  // 함수 변수선언 
   resizeHandler,
   scrollHandler,
   render,
@@ -26,6 +27,7 @@ var elemCanvas,
   calcAnimationValue,
   calcFinalValue,
   init,
+
   pixelDuration = 0, //키프레임 당 차지하는 스크롤 높이
   keyframes = [{
     animationValues: {
@@ -39,46 +41,52 @@ var elemCanvas,
       triangleMove: [200, 1000],
       rectangleMove: [500, 500]
     }
-  }],
+  }];
 
-elemBody = document.body,
-elemCanvas = document.getElementById('cover-canvas'),
-context = elemCanvas.getContext('2d');
-elemVideo = document.getElementById('video');
+  // element 선언
+  elemBody = document.body
+  elemVideo = document.getElementById('video');
+  elemCanvas = document.getElementById('cover-canvas'),
 
+  // 캔버스 그리기 시작
+  context = elemCanvas.getContext('2d');
 
-
-
-init = function () {
+// 시작/초기화 함수
+init = (() => {
   windowWidth = window.innerWidth;
   windowHeight = window.innerHeight;
 
   resizeHandler();
   render();
 
-  window.addEventListener('resize', function () {
+  window.addEventListener('resize', () => {
     requestAnimationFrame(resizeHandler);
   });
 
-  window.addEventListener('scroll', function () {
+  window.addEventListener('scroll', () => {
     requestAnimationFrame(scrollHandler);
   });
 
   elemPhone = document.createElement('img');
   elemPhone.src = 'iphone.png';
-  elemPhone.addEventListener('load', function () {
+  elemPhone.addEventListener('load', () => {
     drawCanvas();
   });
-};
+});
 
 //윈도우 사이즈 변경 시 실행하는 함수
-resizeHandler = function () {
-  var i;
+resizeHandler = () => {
+  let i;
   windowWidth = window.innerWidth;
   windowHeight = window.innerHeight;
+
   totalScrollHeight = 0; //초기화
+  //타임라인 = 스크롤 영역
+  //스크롤을 할 수 있는 범위/전체 높이 (body의 높이)
+  //스크롤 높이를 작게 하면 애니메이션을 빠르게 재생
+  //스크롤 높이를 높게 하면 애니메이션을 느리게 재생
   pixelDuration = 0.5 * windowHeight;
-  //애니메이션 지속되는 시간 / 키프레임 두개라서 절반으로
+  //애니메이션 지속되는 시간 / 키프레임(변화) 두개라서 절반으로
 
   for (i = 0; i < keyframes.length; i++) {
     totalScrollHeight += pixelDuration;
@@ -93,30 +101,30 @@ resizeHandler = function () {
   elemCanvas.style.height = windowHeight + 'px';
 };
 
-scrollHandler = function () {
+scrollHandler = () => {
   scrollY = window.pageYOffset;
 
-  if(scrollY < 0 || scrollY > (totalScrollHeight - windowHeight)) {
-      return;
+  if (scrollY < 0 || scrollY > (totalScrollHeight - windowHeight)) {
+    return;
   }
 
   if (scrollY > pixelDuration + prevDurations) {
-      prevDurations += pixelDuration;
-      currentKeyframe++;
+    prevDurations += pixelDuration;
+    currentKeyframe++;
   } else if (scrollY < prevDurations) {
-      currentKeyframe--;
-      prevDurations -= pixelDuration;
+    currentKeyframe--;
+    prevDurations -= pixelDuration;
   }
 
   relativeScrollY = scrollY - prevDurations;
 
-  console.log(currentKeyframe);
+  // console.log(currentKeyframe);
 
   render();
 };
 
-render = function() {
-  var videoScale, triangleMove, rectangleMove;
+render = () => {
+  let videoScale, triangleMove, rectangleMove;
 
   if (keyframes[currentKeyframe]) {
     videoScale = calcAnimationValue(keyframes[currentKeyframe].animationValues.videoScale);
@@ -127,11 +135,9 @@ render = function() {
   }
 
 
-  console.log(keyframes[currentKeyframe].animationValues.videoScale);
-  console.log(videoScale);
-  // elemVideo.style.transform = `scale(${videoScale})`;
-  elemVideo.style.transform = 'scale(' + videoScale + ')';
-  // elemVideo.style.transform = 'scale(1)';
+  // console.log(keyframes[currentKeyframe].animationValues.videoScale);
+
+  elemVideo.style.transform = `scale(${videoScale})`;
 
   context.clearRect(0, 0, canvasWidth, canvasHeight);
   if (elemPhone) {
@@ -140,15 +146,14 @@ render = function() {
 
 };
 
-calcAnimationValue = function (values) {
-  console.log('??', (relativeScrollY / pixelDuration) * (values[1] - values[0] + values[0]));
+calcAnimationValue = (values) => {
   return (relativeScrollY / pixelDuration) * (values[1] - values[0]) + values[0];
 };
 
-drawCanvas = function (videoScale, triangleMove, rectangleMove) {
-  var videoScale = videoScale || 1,
-      triangleMove = triangleMove || 0,
-      rectangleMove = rectangleMove || 0;
+drawCanvas = (videoScale, triangleMove, rectangleMove) => {
+  videoScale = videoScale || 1,
+    triangleMove = triangleMove || 0,
+    rectangleMove = rectangleMove || 0;
 
   context.save();
   context.translate((canvasWidth - phoneWidth * videoScale) * 0.5, (canvasHeight - phoneHeight * videoScale) * 0.5);

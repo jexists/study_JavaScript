@@ -53,3 +53,23 @@ body {
   background-color: #fff; */
   transform: scale(1);
 }
+
+
+#video {
+  background-color: #fff;
+  width: 615px;
+  height: 1460px;
+  border-radius: 8%;
+  /* animation: rotate 5s linear infinite; */
+  
+  transform: scale(1);
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
