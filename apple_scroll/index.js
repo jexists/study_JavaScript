@@ -151,7 +151,7 @@ drawCanvas = function (videoScale, triangleMove, rectangleMove) {
   context.fillStyle = '#2b2b2b';
   // context.fillStyle = 'black';
 
-  // context.fillStyle = 'red';
+  context.fillStyle = 'red';
 
   //  위 삼각형
   context.beginPath();
@@ -162,7 +162,7 @@ drawCanvas = function (videoScale, triangleMove, rectangleMove) {
   context.fill();
   context.closePath();
 
-  // context.fillStyle = 'blue'
+  context.fillStyle = 'blue'
 
   //  아래 삼각형
   context.beginPath();
@@ -173,7 +173,7 @@ drawCanvas = function (videoScale, triangleMove, rectangleMove) {
   context.fill();
   context.closePath();
 
-  // context.fillStyle = 'yello'
+  context.fillStyle = 'yellow'
 
   //  왼쪽 삼각형
   context.beginPath();
@@ -184,7 +184,7 @@ drawCanvas = function (videoScale, triangleMove, rectangleMove) {
   context.fill();
   context.closePath();
 
-  // context.fillStyle = 'green'
+  context.fillStyle = 'green'
 
   //  오른쪽 삼각형
   context.beginPath();
@@ -195,7 +195,7 @@ drawCanvas = function (videoScale, triangleMove, rectangleMove) {
   context.fill();
   context.closePath();
 
-  // context.fillStyle = 'blue'
+  context.fillStyle = 'white'
   // box 상하
   context.fillRect(0, canvasHeight * 0.5 - 2600 - rectangleMove, canvasWidth, 2000)
   context.fillRect(0, canvasHeight * 0.5 + 600 + rectangleMove, canvasWidth, 2000)
