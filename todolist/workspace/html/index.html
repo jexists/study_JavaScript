@@ -1,15 +1,43 @@
 <!DOCTYPE html>
-<html lang="ko">
+<!-- todoList.html -->
+<html lang="ko-KR">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/style/reset.css" />
-  <title>TODOList</title>
-</head>
-<body>
-  <h1>TODOList!</h1>
+  <meta name="viewport"
+    content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="todolist">
+  <meta name="keyword" content="html, css, js, web, scss, todolist">
+  <meta name="author" content="jexists">
 
-  <main>
+  <!-- link ===================================== -->
+  <link rel="stylesheet" href="./assets/style/style.css">
+
+  <!--[if lte IE 9]>
+      <script src="./ie/html5shiv-3.7.3/dist/html5shiv.min.js"> </script>
+      <script src="../ie/PIE-1.0.0/PIE.js"></script>
+      <script src="../ie/Respond-1.4.2/dest/respond.min.js"></script>
+   <![endif]-->
+
+  <!-- link favicon ============================= -->
+  <link rel="shortcut icon" type="image/png" href="../favicon.png">
+  <!-- link touch ============================= -->
+  <link rel="apple-touch-icon" href="../favicon.png">
+
+  <title>TODOLIST</title>
+</head>
+
+<body>
+  <noscript>
+    <p>현재 접속하고 있는 사이트의 기능의 일부가 원활하게 실행되고 있지 않습니다. <br />
+      자바스크립트의 기능을 활성화 해주세요.</p>
+    <p><a href="http://enable-javascript.com/ko/" target="_blank">
+        브라우저에서 자바스크립트 활성화하는 방법</a></p>
+  </noscript>
+  
+  <main class="wrap">
+    <h1 class="hd">TODOLIST!</h1>
     <section class="list_wrap">
       <div class="header">
         <h2>todolist</h2>
@@ -22,7 +50,7 @@
       </div>
 
       <div class="add_btn_area">
-        <button type="button">할 일 추가하기</button>
+        <button type="button" onclick="addTodoList()"> <span>+</span> 할 일 추가하기</button>
       </div>
 
       <ol class="list_area">
