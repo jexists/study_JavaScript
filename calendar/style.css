@@ -1,0 +1,89 @@
+@charset "UFT-8";
+
+* {
+  margin: 0;
+  padding: 0;
+  /* color: rgba(255, 255, 255, 1); */
+}
+body {
+  height: 100vh;
+  background-color: #2b2b2b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  /* flex-direction: column; */
+}
+
+.calendar {
+  width: 300px;
+  height: auto;
+  background: #fff;
+  box-shadow: 0 5px 50px rgba(0, 0, 0, 0.5);
+}
+
+.calendar .image {
+  width: 100%;
+  height: 200px;
+  background: #1829c7;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.calendar .image h2,
+.calendar .image h3 {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.calendar .image h3 {
+  margin: 10px 0 0;
+  font-weight: normal;
+}
+
+.calendar .date {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25px, 1fr));
+  grid-gap: 10px;
+  box-sizing: border-box;
+}
+
+.calendar .date div {
+  display: flex;
+  justify-content: center;;
+  align-items: center;
+  height: 25px;
+  color: #262626;
+  padding: 3px 0 0;
+  border-radius: 5px;
+}
+
+.calendar .date div.day {
+  font-weight: bold;
+
+}
+
+
+
+.calendar .date div.day:first-child,
+.calendar .date div.number:nth-child(7n+1) {
+  font-weight: bold;
+  color: #ff685d;
+}
+
+
+.calendar .date div.number.active {
+  background: #009688;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+.calendar .date div.number:hover {
+  background: #26ccbb;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
