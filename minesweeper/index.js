@@ -184,39 +184,39 @@ const checkTile = (tile, coordinate) => {
   setTimeout(() => {
     if (x > 0) {
       let targetW = document.querySelectorAll(`[data-tile="${x-1},${y}"]`)[0];
-      clickTile(targetW, `${x-1}, ${y}`);
+      clickTile(targetW, `${x-1},${y}`);
     }
     
     if (x < boardSize - 1) {
       let targetE = document.querySelectorAll(`[data-tile="${x+1},${y}"]`)[0];
-      clickTile(targetE, `${x+1}, ${y}`);
+      clickTile(targetE, `${x+1},${y}`);
     }
 
     if (y > 0) {
       let targetN = document.querySelectorAll(`[data-tile="${x},${y-1}"]`)[0];
-      clickTile(targetN, `${x}, ${y-1}`);
+      clickTile(targetN, `${x},${y-1}`);
     }
     
     if (y < boardSize - 1) {
       let targetS = document.querySelectorAll(`[data-tile="${x},${y+1}"]`)[0];
-      clickTile(targetS, `${x}, ${y+1}`);
+      clickTile(targetS, `${x},${y+1}`);
     }
 
     if (x > 0 && y > 0 ) {
       let targetNW = document.querySelectorAll(`[data-tile="${x-1},${y-1}"]`)[0];
-      clickTile(targetNW, `${x-1}, ${y-1}`);
+      clickTile(targetNW, `${x-1},${y-1}`);
     }
     if (x < boardSize - 1 && y < boardSize - 1 ) {
       let targetSE = document.querySelectorAll(`[data-tile="${x+1},${y+1}"]`)[0];
-      clickTile(targetSE, `${x+1}, ${y+1}`);
+      clickTile(targetSE, `${x+1},${y+1}`);
     }
     if (x > 0 && x < boardSize - 1) {
       let targetNE = document.querySelectorAll(`[data-tile="${x+1},${y+1}]"]`)[0];
-      clickTile(targetNE, `${x+1}, ${y-1}`);
+      clickTile(targetNE, `${x+1},${y-1}`);
     }
     if (x > 0 && y < boardSize - 1) {
       let targetSW = document.querySelectorAll(`[data-tile="${x-1},${y+1}"]`)[0];
-      clickTile(targetSW, `${x-1}, ${y+1}`);
+      clickTile(targetSW, `${x-1},${y+1}`);
     }
   }, 10);
 }
