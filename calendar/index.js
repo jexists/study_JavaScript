@@ -83,6 +83,8 @@ const init = () => {
 
     // console.log(div);
   }
+  
+  console.log(today_month);
 
   if (today_month === 0) {
     const activatedDate = document.querySelector(`.number:nth-of-type(${date + 7 + firstDay_day})`)
