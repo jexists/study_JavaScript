@@ -13,18 +13,22 @@ const selectMonth = (select) => {
   } else {
     today_month--;
   }
-  removeNum();
-  init();
+  getCalendar();
 }
 
-const removeNum = () => {
+const todayCalendar = () => {
+  today_month = 0;
+  getCalendar();
+}
+
+const getCalendar = () => {
   const deleteNum = document.querySelectorAll('.number').length;
   for (let i = 0; i < deleteNum; i++) {
     const elem = document.querySelector('.number');
     elem.parentNode.removeChild(elem);
   }
+  init();
 }
-
 const init = () => {
 
   console.log(today_month);
@@ -80,8 +84,10 @@ const init = () => {
     // console.log(div);
   }
 
-  const activatedDate = document.querySelector(`.number:nth-of-type(${date + 7 + firstDay_day})`)
-  activatedDate.classList.add('active');
-  console.log('오늘 클릭되는 날', activatedDate);
+  if (today_month === 0) {
+    const activatedDate = document.querySelector(`.number:nth-of-type(${date + 7 + firstDay_day})`)
+    activatedDate.classList.add('active');
+    console.log('오늘 클릭되는 날', activatedDate);
+  }
 }
 init();
