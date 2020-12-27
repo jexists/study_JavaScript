@@ -211,7 +211,7 @@ const checkTile = (tile, coordinate) => {
       clickTile(targetSE, `${x+1},${y+1}`);
     }
     if (x > 0 && x < boardSize - 1) {
-      let targetNE = document.querySelectorAll(`[data-tile="${x+1},${y+1}]"]`)[0];
+      let targetNE = document.querySelectorAll(`[data-tile="${x+1},${y-1}]"]`)[0];
       clickTile(targetNE, `${x+1},${y-1}`);
     }
     if (x > 0 && y < boardSize - 1) {
