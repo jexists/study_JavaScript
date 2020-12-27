@@ -23,11 +23,22 @@ body {
 }
 
 .calendar .image {
+  position: relative;
   width: 100%;
   height: 200px;
   background: #1829c7;
   padding: 20px;
   box-sizing: border-box;
+}
+.calendar .btn_area {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.calendar .btn_area button {
+  padding: 4px 8px;
+  border-radius: 5px;
 }
 
 .calendar .image h2,
