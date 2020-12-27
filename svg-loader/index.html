@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <title>배터리 충전</title>
+</head>
+
+<body>
+  <svg class="loading" width="180" height="100">
+    <linearGradient id="linearColors" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#01E400">
+        <animate attributeName="stop-color" values="#01E400; #FEFF01; #FF7E00; #FB0300; #9B004A; #7D0022; #01E400;" dur="4s" repeatCount="indefinite"></animate>
+      </stop>
+      <stop offset="20%" stop-color="#FEFF01">
+        <animate attributeName="stop-color" values="#FEFF01; #FF7E00; #FB0300; #9B004A; #7D0022;#01E400; #FEFF01;"  dur="4s" repeatCount="indefinite"></animate>
+      </stop>
+      <stop offset="40%" stop-color="#FF7E00">
+        <animate attributeName="stop-color" values="#FF7E00; #FB0300; #9B004A; #7D0022; #01E400; #FEFF01;#FF7E00;" dur="4s" repeatCount="indefinite"></animate>
+      </stop>
+      <stop offset="60%" stop-color="#FB0300">
+        <animate attributeName="stop-color" values="#FB0300;#9B004A; #7D0022; #01E400; #FEFF01; #FF7E00; #FB0300;" dur="4s" repeatCount="indefinite"></animate>
+      </stop>
+      <stop offset="80%" stop-color="#9B004A">
+        <animate attributeName="stop-color" values="#7D0022; #01E400; #FEFF01; #FF7E00; #FB0300;#9B004A; #7D0022;" dur="4s" repeatCount="indefinite"></animate>
+      </stop>
+      <stop offset="100%" stop-color="#7D0022">
+        <animate attributeName="stop-color" values="#7D0022; #01E400; #FEFF01; #FF7E00; #FB0300; #9B004A;#7D0022;" dur="4s" repeatCount="indefinite"></animate>
+      </stop>
+   </linearGradient>
+   <circle class="loading_circle" cx="90" cy="50" r="25" stroke="url(#linearColors)" stroke-width="7" fill="transparent" stroke-dasharray="1" stroke-dashoffset="0" data-per="100"></circle>
+  </svg>
+  <script src="./index.js"></script>
+</body>
+
+</html>
+
+
+
+
+<!-- 
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <title>SVG Loader</title>
+</head>
+
+<body>
+  <svg class="loading" width="180" height="100">
+    <circle class="loading_circle" cx="90" cy="50" r="25" stroke="#00ab33" stroke-width="3" fill="transparent" stroke-dasharray="1" stroke-dashoffset="0" data-per="100"></circle>
+  </svg> -->
+  <!-- <svg>
+    <linearGradient id="linearColors" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="5%" stop-color="#01E400"></stop>
+      <stop offset="25%" stop-color="#FEFF01"></stop>
+      <stop offset="40%" stop-color="#FF7E00"></stop>
+      <stop offset="60%" stop-color="#FB0300"></stop>
+      <stop offset="80%" stop-color="#9B004A"></stop>
+      <stop offset="100%" stop-color="#7D0022"></stop>
+   </linearGradient>
+    <circle cx="70" cy="70" r="70" stroke="url(#linearColors)"></circle>
+  </svg> -->
+<!--   
+  <script src="./index.js"></script>
+
+</body>
+
+</html> -->
+

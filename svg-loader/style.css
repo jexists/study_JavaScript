@@ -1,0 +1,48 @@
+@charset "UFT-8";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: rgba(255, 255, 255, 1);
+}
+body {
+  height: 100vh;
+  background-color: #2b2b2b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+:root {
+  --l: 0;
+  --deg: 0;
+  --result: 0;
+}
+
+.loading {
+  text-align: center;
+}
+/* .loading_circle {
+  stroke-dasharray: var(--l);
+  stroke-dashoffset: var(--l);
+  animation: loading 3s infinite;
+  filter: drop-shadow(0 0 10px #fff);
+  box-shadow: 0 0 10px #fff;
+}
+
+@keyframes loading {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+      stroke-dashoffset: var(--result);
+  }
+} */
+
+.loading {
+  text-align: center;
+  transform: rotate(-90deg);
+}
