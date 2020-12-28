@@ -22,7 +22,7 @@ export class Polygon {
       const x = this.radius * Math.cos(angle * i);
       const y = this.radius * Math.sin(angle * i);
 
-      (i == 0) ? ctx.moveTo(x, y) : ctx.lineTo(x,y);
+      (i == 0) ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
     }
 
     ctx.fill();
