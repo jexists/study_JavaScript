@@ -37,9 +37,11 @@ class App {
 
     this.polygon = new Polygon(
       this.stageWidth / 2,
-      this.stageHeight / 2,
-      this.stageHeight / 3.5,
-      12 //도형 변 갯수
+      this.stageHeight + (this.stageHeight / 4),
+      this.stageHeight / 1.4,
+      15 //도형 변 갯수
+      // this.stageHeight / 2,
+      // this.stageHeight / 3,
     );
   }
 
