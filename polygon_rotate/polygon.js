@@ -9,7 +9,7 @@ export class Polygon {
     this.rotate = 0;
   }
 
-  animate(ctx) {
+  animate(ctx, moveX) {
     ctx.save();
     ctx.fillStyle = '#333';
     ctx.beginPath();
@@ -17,6 +17,9 @@ export class Polygon {
     const angle = PI2 / this.sides;
 
     ctx.translate(this.x, this.y);
+
+    this.rotate -= moveX * 0.008;
+    ctx.rotate(this.rotate);
 
     for (let i = 0; i < this.sides; i++) {
       const x = this.radius * Math.cos(angle * i);
