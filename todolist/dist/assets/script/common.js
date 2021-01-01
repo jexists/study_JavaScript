@@ -21,8 +21,17 @@ const todoItems = [
   }
 ]
 
+// elelment 
+const viewWrap = document.querySelector('.view_wrap');
+const createWrap = document.querySelector('.create_wrap');
+
+
 const addTodoList = () => {
-  // console.log(todoItems);
+  viewWrap.classList.add('display_none');
+  createWrap.classList.remove('display_none');
+  console.log(createWrap);
+  console.log(viewWrap);
+  
 }
 
 // var IndexController = function() {
