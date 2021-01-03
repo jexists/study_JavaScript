@@ -1,13 +1,10 @@
-// var Common = function() {
-//   var self = this;
+var Common = function() {
+  var self = this;
 
-//   self.init = function() {
-//     console.log('init!');
-//   }
+  self.init = function() {
+  }
 
-//   self.init();
-// }
+  self.init();
+}
 
-// var common = new Common();
-
-console.log('??');
+var common = new Common();

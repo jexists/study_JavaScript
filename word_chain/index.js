@@ -14,11 +14,12 @@ setTimeout(()=> {
 textInput.addEventListener('keypress', (e) => {
   // keypress: 영어로 쓸경우 안되고 한국어만 가능
   // keyup: 영어 끝말잇기 할경우 사용
+  // keydown 사용..?
 
   e.preventDefault();
   e.stopPropagation();
 
-  if (e.key === 13 || e.keyCode === 13) {
+  if (e.key === 'Enter' || e.keyCode === 13) {
     if (!first_word) {
       first_word = textInput.value;
       createElement(first_word);
