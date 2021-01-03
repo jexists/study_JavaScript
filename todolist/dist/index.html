@@ -35,13 +35,13 @@
     <p><a href="http://enable-javascript.com/ko/" target="_blank">
         브라우저에서 자바스크립트 활성화하는 방법</a></p>
   </noscript>
-  
+
   <main class="wrap">
     <h1 class="hd">TODOLIST!</h1>
     <section class="list_wrap">
       <div class="header">
         <h2>todolist</h2>
-        
+
         <div class="percent_area">
 
         </div>
@@ -64,11 +64,33 @@
           <input type="text" placeholder="제목">
           <button type="button">별</button>
         </div>
-        일시
-        알림
+
+        
+        <label for="checkBox">
+          <input type="checkbox" id="checkBox" />
+          <span>알림설정</span>
+        </label>
+        
+        <label for="cars">알림시간</label>
+        <select name="cars" id="cars">
+          <option value="0.5">30분전</option>
+          <option value="1">1시간</option>
+          <option value="2">2시간</option>
+          <option value="24">하루전</option>
+        </select>
+
+        <div class="dropdown">
+          <button type="button" class="dropdown-toggle">알림시간</button>
+          <ul class="dropdown-menu">
+            <li>30분전</li>
+            <li>1시간전</li>
+          </ul>
+        </div>
+
         <textarea name="" id="" cols="30" rows="10" placeholder="내용"></textarea>
 
-        <button type="submit">저장하기</button>
+        <button type="submit">저장</button>
+        <button type="button">취소</button>
       </form>
     </section>
 
@@ -79,4 +101,5 @@
 
   <script src="/assets/script/common.js"></script>
 </body>
+
 </html>

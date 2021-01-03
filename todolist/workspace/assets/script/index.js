@@ -11,6 +11,7 @@ const todoItems = [
 // elelment 
 const viewWrap = document.querySelector('.view_wrap');
 const createWrap = document.querySelector('.create_wrap');
+const dropdown = document.querySelector('.dropdown');
 
 
 const addTodoList = () => {
