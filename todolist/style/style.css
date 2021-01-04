@@ -1,0 +1,163 @@
+/*1. body, html*/
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  color: #333;
+  font-family: "noto sans", "Gothic Al", sans-serif;
+}
+
+*, *::after, *::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6,
+ul, li, ol, dl, dt, dd,
+p, pre, img {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+ul, li, ol {
+  list-style: none;
+}
+
+table, thead, tbody, tfoot,
+tr, th, td {
+  margin: 0;
+  padding: 0;
+  border-spacing: 0;
+  border-collapse: collapse;
+  border: 1px solid #777;
+}
+
+abbr {
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+hr {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #777;
+}
+
+img, iframe, video {
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: inherit;
+  outline: 2px solid #06f;
+}
+
+a:focus {
+  outline: 2px solid #f06;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+  padding: 8px 10px;
+  overflow: hidden;
+  border-radius: 5px;
+  background: #fff;
+  border: 1px solid #333;
+}
+
+button:hover {
+  background: #1664D8;
+  color: #fff;
+}
+
+button:focus {
+  background: #135BC2;
+  color: #fff;
+}
+
+/* html5 =============================== */
+header, footer, aside, nav, section,
+article, figure, figcaption {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+/* form ================================ */
+form, fieldset, legend {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+legend {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+input {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-indent: 0.5rem;
+  cursor: pointer;
+}
+
+input:hover,
+text-area:hover,
+select:hover {
+  background: #fdc;
+}
+
+input:focus,
+text-area:focus,
+select:focus {
+  background: #fcd;
+}
+
+.hd {
+  display: none;
+  overflow: hidden;
+  position: relative;
+  z-index: -1;
+  width: 0;
+  height: 0;
+}
+
+.wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+.wrap .list_wrap {
+  width: 50%;
+  height: 100%;
+  padding: 20px;
+  border-radius: 10px 0 0 10px;
+  background-color: #fff;
+}
+
+.wrap .list_wrap .add_btn_area {
+  margin: 20px 0;
+  width: 100%;
+}
+
+.wrap .list_wrap .add_btn_area button {
+  width: 100%;
+  text-align: left;
+}
+/*# sourceMappingURL=style.css.map */

@@ -12,7 +12,7 @@
   <meta name="author" content="jexists">
 
   <!-- link ===================================== -->
-  <link rel="stylesheet" href="./assets/style/style.css">
+  <link rel="stylesheet" href="./style/style.css">
 
   <!--[if lte IE 9]>
       <script src="./ie/html5shiv-3.7.3/dist/html5shiv.min.js"> </script>
@@ -59,9 +59,9 @@
     </section>
 
     <section class="create_wrap display_none">
-      <form>
+      <form id="createForm" onsubmit="handleSubmit(event)">
         <div>
-          <input type="text" placeholder="제목">
+          <input type="text" class="title" placeholder="제목">
           <button type="button">별</button>
         </div>
 
@@ -79,18 +79,18 @@
           <option value="24">하루전</option>
         </select>
 
-        <div class="dropdown">
+        <!-- <div class="dropdown">
           <button type="button" class="dropdown-toggle">알림시간</button>
           <ul class="dropdown-menu">
             <li>30분전</li>
             <li>1시간전</li>
           </ul>
-        </div>
+        </div> -->
 
-        <textarea name="" id="" cols="30" rows="10" placeholder="내용"></textarea>
+        <textarea name="" id="contents" cols="30" rows="10" placeholder="내용" class="contents"></textarea>
 
         <button type="submit">저장</button>
-        <button type="button">취소</button>
+        <button type="button" onclick="cancleCreate()">취소</button>
       </form>
     </section>
 
@@ -99,7 +99,7 @@
     </section>
   </main>
 
-  <script src="/assets/script/common.js"></script>
+  <script src="/script/index.js"></script>
 </body>
 
 </html>
