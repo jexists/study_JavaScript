@@ -33,15 +33,17 @@
 
 	const createTodoLists = (title) => {
 		const newId = toDoLists.length + 1;
+		const li = document.createElement('li');
+		
+		// <li id="todo_${newId}"></li>
 		const html = `
-			<li id="todo_${newId}">
 				<span>${title}</span>
 				<button type="button">수정</button>
 				<button type="button">삭제</button>
-			</li>
-		`
+		`;
 		//돌려야하나..? 고민....해봐야겟네...
-		toDoListArea.innerHTML = html;
+		li.innerHTML = html;
+		createWrap.appendChild(li);
 
 		const toDoItem = {
 			id: newId,
