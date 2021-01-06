@@ -1,5 +1,5 @@
 
-(() => {
+// (() => {
 
 	const storageName = 'ToDoList';
 
@@ -34,16 +34,25 @@
 	const createTodoLists = (title) => {
 		const newId = toDoLists.length + 1;
 		const li = document.createElement('li');
-		
+		li.id = newId;
+
 		// <li id="todo_${newId}"></li>
 		const html = `
+			<label for="checkBox">
+			<input type="checkbox" id="checkBox" />
+			<span>완료</span>
+			</label>
+			<a>
 				<span>${title}</span>
-				<button type="button">수정</button>
-				<button type="button">삭제</button>
+			</a>
+			<button type="button">수정</button>
+			<button class="deleteBtn" type="button" onclick="deleteTodo(event)">삭제</button>
 		`;
-		//돌려야하나..? 고민....해봐야겟네...
 		li.innerHTML = html;
 		createWrap.appendChild(li);
+
+
+		// document.querySelector('.deleteBtn').addEventListener("click", deleteTodo);
 
 		const toDoItem = {
 			id: newId,
@@ -61,15 +70,19 @@
 	}
 
 	const deleteTodo = (event) => {
+		console.log(event);
 		const btn = event.target;
 		const li = btn.parentNode;
-		toDoListArea.removeChild(li);
+		console.log(li);
+		// toDoListArea.removeChild(li);
+		li.parentNode.removeChild(li);
 
 		const cleanToDos = toDoLists.filter(function (toDo) {
 			return toDo.id !== parseInt(li.id);
 		});
 		toDoLists = cleanToDos;
-		createTodoLists()
+		console.log(cleanToDos);
+		saveTodoLists();
 	}
 
 	const saveTodoLists = () => {
@@ -113,5 +126,5 @@
 
 
 
-})();
+// })();
 
