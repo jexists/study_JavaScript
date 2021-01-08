@@ -5,6 +5,7 @@ const viewWrap = document.querySelector('.view_wrap');
 const createWrap = document.querySelector('.create_wrap');
 const dropdown = document.querySelector('.dropdown');
 const starYN = document.querySelector('.star');
+const alarmYN = document.querySelector('.alarm');
 
 const toDoform = document.querySelector("#createForm");
 const toDoTitle = toDoform.querySelector(".title");
@@ -54,7 +55,7 @@ const createTodoLists = (title) => {
 		createDate: Date.now(),
 		deadlineDate: Date.now(),
 		contents: toDoContents.value,
-		alramYN: false,
+		alarmYN: alarmYN.checked,
 		completeYN: false,
 		starYN: starYN.checked
 	};
