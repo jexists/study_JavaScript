@@ -35,67 +35,54 @@
     <p><a href="http://enable-javascript.com/ko/" target="_blank">
         브라우저에서 자바스크립트 활성화하는 방법</a></p>
   </noscript>
+  <div class="wrap">
 
-  <main class="wrap">
-    <h1 class="hd">TODOLIST!</h1>
-    <section class="list_wrap">
-      <div class="header">
-        <h2>todolist</h2>
+    <main class="todolist_area">
+      <h1 class="hd">TODOLIST!</h1>
 
-        <div class="percent_area">
-
+      <section class="create_wrap">
+        <div class="add_btn_area">
+          <button type="button" class="add_btn"> <span>+</span> 할 일 추가하기</button>
         </div>
-
-
-      </div>
-
-      <div class="add_btn_area">
-        <button type="button" class="add_btn"> <span>+</span> 할 일 추가하기</button>
-      </div>
-
-      <ol class="list_area">
-        <li></li>
-      </ol>
-
-      <ul class="complete_list">
-        <li></li>
-      </ul>
-    </section>
-
-    <section class="create_wrap display_none">
-      <form id="createForm">
-        <div>
-          <input type="text" class="title" placeholder="제목">
-          <label for="star">
-            <input type="checkbox" id="star" class="star"/>
-            <span>별</span>
-          </label>
-        </div>
-
-
-        <div>
-          <span>시간</span>
-          토글
-          <div>
-            <input type="date" />
-            <input type="time" />
+        <form id="createForm" class="create_form display_none">
+          <div class="create_header">
+            <input type="text" class="title" placeholder="제목">
+            <label for="heart" class="heart">
+              <input type="checkbox" id="heart" />
+            </label>
           </div>
 
-          <label for="checkBox">
-            <input type="checkbox" id="checkBox" class="alarm"/>
-            <span>알림설정</span>
-          </label>
-          <label for="cars">알림시간</label>
-          <select name="cars" id="cars">
-            <option value="0.5">30분전</option>
-            <option value="1">1시간</option>
-            <option value="2">2시간</option>
-            <option value="24">하루전</option>
-          </select>
-        </div>
+          <div class="time_setting">
+            <span>시간 설정</span>
+            <div class="toggle">
+              <label for="checkBox">
+                <input type="checkbox" id="checkBox" />
+                <span></span>
+                <i class="indicator"></i>
+              </label>
+            </div>
+          </div>
+          <div class="show_time display_none">
+            <div>
+              <input type="date" />
+              <input type="time" />
+            </div>
+
+            <label for="checkBox">
+              <input type="checkbox" id="checkBox" class="alarm" />
+              <span>알림설정</span>
+            </label>
+            <label for="cars">알림시간</label>
+            <select name="cars" id="cars">
+              <option value="0.5">30분전</option>
+              <option value="1">1시간</option>
+              <option value="2">2시간</option>
+              <option value="24">하루전</option>
+            </select>
+          </div>
 
 
-        <!-- <div class="dropdown">
+          <!-- <div class="dropdown">
           <button type="button" class="dropdown-toggle">알림시간</button>
           <ul class="dropdown-menu">
             <li>30분전</li>
@@ -103,17 +90,47 @@
           </ul>
         </div> -->
 
-        <textarea name="" id="contents" cols="30" rows="10" placeholder="내용" class="contents"></textarea>
+          <textarea name="" id="contents" cols="30" rows="10" placeholder="내용" class="contents"></textarea>
 
-        <button type="submit">저장</button>
-        <button type="button" class="cancle_btn">취소</button>
-      </form>
-    </section>
+          <button type="submit">저장</button>
+          <button type="button" class="cancle_btn">취소</button>
+        </form>
+      </section>
 
-    <section class="view_wrap">
+      <!-- 투두리스트 -->
+      <section class="view_wrap">
+        <ul class="todolist_view">
 
-    </section>
-  </main>
+          <li>
+            <label for="checkBox">
+              <input type="checkbox" id="checkBox" />
+              <span>완료</span>
+            </label>
+            <a>
+              <p>테스트</p>
+              <span>별</span>
+            </a>
+            <div>
+              <div class="time_setting">
+                <p class="date">2020</p>
+                <p class="time"></p>
+              </div>
+              <div class="alarm_setting">
+                <p class="">알람 몇분전</p>
+              </div>
+              <div class="contents">
+                블라블라
+              </div>
+              <div>
+                <button type="button">수정</button>
+                <button class="deleteBtn" type="button" onclick="deleteTodo(event)">삭제</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+  </div>
 
   <script src="/script/index.js"></script>
 </body>

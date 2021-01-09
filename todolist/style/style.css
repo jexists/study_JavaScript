@@ -134,30 +134,160 @@ select:focus {
   height: 0;
 }
 
-.wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 20px;
-  width: 100%;
-  height: 100%;
+body {
+  background-color: #2b2b2b;
 }
 
-.wrap .list_wrap {
-  width: 50%;
-  height: 100%;
-  padding: 20px;
-  border-radius: 10px 0 0 10px;
+.display_none {
+  display: none;
+}
+
+.wrap {
+  width: 320px;
+  margin: auto;
+  padding: 30px 0;
+  height: auto;
+}
+
+.wrap .todolist_area {
+  min-height: calc(100vh - 60px);
+  padding: 18px 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  -webkit-box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+          box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
   background-color: #fff;
 }
 
-.wrap .list_wrap .add_btn_area {
-  margin: 20px 0;
+.add_btn {
+  all: unset;
+  display: block;
   width: 100%;
+  padding: 8px 0;
+  margin: 0 0 18px;
+  border: 1px solid #767676;
+  text-align: center;
 }
 
-.wrap .list_wrap .add_btn_area button {
+.add_btn:hover {
+  background-color: #2b2b2b;
+}
+
+.create_form {
   width: 100%;
-  text-align: left;
+  height: auto;
+}
+
+.create_form .create_header input {
+  width: 90%;
+  height: 30px;
+}
+
+.create_form .create_header .heart {
+  display: inline-block;
+  width: 18px;
+  height: 10px;
+  background-color: #2b2b2b;
+  border-radius: 5px 0 0 5px;
+  -webkit-transform: scale(0.9) rotate(45deg) translateY(10px);
+          transform: scale(0.9) rotate(45deg) translateY(10px);
+  -webkit-transform-origin: right bottom;
+          transform-origin: right bottom;
+  cursor: pointer;
+}
+
+.create_form .create_header .heart::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 10px;
+  background-color: #2b2b2b;
+  border-radius: 5px 0 0 5px;
+  -webkit-transform: rotate(450deg) translate(-4px, 10px);
+          transform: rotate(450deg) translate(-4px, 10px);
+  -webkit-transform-origin: right bottom;
+          transform-origin: right bottom;
+}
+
+.create_form .create_header .heart input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  display: none;
+}
+
+.create_form .time_setting {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 10px 0 4px;
+}
+
+.toggle label {
+  position: relative;
+  margin: 5px 0;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.toggle label input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  display: none;
+}
+
+.toggle label span {
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  background-color: #222;
+  border-radius: 20px;
+  -webkit-box-shadow: inset 0 2px 15px rgba(0, 0, 0, 0.2), inset 0 2px 2px rgba(0, 0, 0, 0.2), inset 0 -1px 1px rgba(0, 0, 0, 0.2);
+          box-shadow: inset 0 2px 15px rgba(0, 0, 0, 0.2), inset 0 2px 2px rgba(0, 0, 0, 0.2), inset 0 -1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.toggle label .indicator {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#444), to(#222));
+  background: linear-gradient(to bottom, #444, #222);
+  border-radius: 50%;
+  -webkit-box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+          box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+}
+
+.toggle label input:checked ~ .indicator {
+  left: 20px;
+}
+
+.toggle label .indicator::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  width: 5px;
+  height: 5px;
+  background: #f00;
+  border-radius: 50%;
+}
+
+.toggle label input:checked ~ .indicator::before {
+  background: #0f0;
+  border-radius: 50%;
 }
 /*# sourceMappingURL=style.css.map */

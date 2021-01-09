@@ -1,43 +1,139 @@
-.wrap {
-  display: flex;
-  padding: 20px;
-  width: 100%;
-  height: 100%;
-  // background-color: #333;
-  .list_wrap {
-    width: 50%;
-    height: 100%;
-    padding: 20px;
-    border-radius: 10px 0 0 10px;
-    background-color: #fff;
-    // border-right: 1px solid #333;
+$background: #2b2b2b;
+$hover: #2b2b2b;
+$border: 1px solid rgba(255, 255, 255, 0.2);
+$white: #fff;
 
-    .add_btn_area {
-      margin: 20px 0 ;
-      width: 100%;
-      button {
-        width: 100%;
-        text-align: left;
+body {
+  background-color: $background;
+}
+
+.display_none {
+  display: none;
+}
+.wrap {
+  width: 320px;
+  margin: auto;
+  padding: 30px 0;
+  height: auto;
+  .todolist_area {
+    min-height: calc(100vh - 60px);
+    padding: 18px 22px;
+    border-top: $border;
+    border-left: $border;
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+  }
+}
+
+.add_btn {
+  all: unset;
+  display: block;
+  width: 100%;
+  padding: 8px 0;
+  margin: 0 0 18px;
+  border: 1px solid rgb(118, 118, 118);
+  text-align: center;
+  &:hover {
+    background-color: $hover;
+  }
+}
+
+.create_form {
+  width: 100%;
+  height: auto;
+  .create_header {
+    input {
+      width: 90%;
+      height: 30px;
+    }
+    .heart {
+      display: inline-block;
+      width: 18px;
+      height: 10px;
+      background-color: $background;
+      border-radius: 5px 0 0 5px;
+      transform: scale(0.9) rotate(45deg) translateY(10px);
+      transform-origin: right bottom;
+      cursor: pointer;
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 18px;
+        height: 10px;
+        background-color: $background;
+        border-radius: 5px 0 0 5px;
+        transform: rotate(450deg) translate(-4px, 10px);
+        transform-origin: right bottom;
       }
+
+    input {
+      appearance: none;
+      display: none;
+    }
     }
   }
-  // .create_wrap {
-  //   width: 50%;
-  //   height: 100%;
-  //   padding: 20px;
-  //   border-radius: 0 10px 10px 0;
-  //   background-color: #fff;
-  //   &.display_none {
-  //     display: none;
-  //   }
-  // }
-  // .view_wrap {
-  //   width: 50%;
-  //   height: 100%;
-  //   border-radius: 0 10px 10px 0;
-  //   background-color: #fff;
-  //   &.display_none {
-  //     display: none;
-  //   }
-  // }
+  .time_setting {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0 4px;
+  }
+}
+
+
+
+.toggle {
+  label {
+    position: relative;
+    margin: 5px 0;
+    padding: 5px 0;
+    cursor: pointer;
+    input {
+      appearance: none;
+      display: none;
+    }
+
+    span {
+      display: inline-block;
+      width: 40px;
+      height: 20px;
+      background-color: #222;
+      border-radius: 20px;
+      box-shadow: inset 0 2px 15px rgba(0, 0, 0, 0.2), inset 0 2px 2px rgba(0, 0, 0, 0.2),
+        inset 0 -1px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    .indicator {
+      position: absolute;
+      top: -2px;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(to bottom, #444, #222);
+      border-radius: 50%;
+      box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+      transition: 0.5s;
+      transform: scale(0.8);
+    }
+    input:checked ~ .indicator {
+      left: 20px;
+    }
+
+    .indicator::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: 0.5s;
+      width: 5px;
+      height: 5px;
+      background: #f00;
+      border-radius: 50%;
+    }
+
+    input:checked ~ .indicator::before {
+      background: #0f0;
+      border-radius: 50%;
+    }
+  }
 }

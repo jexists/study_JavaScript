@@ -1,7 +1,7 @@
 const storageName = 'ToDoList';
 
 // elelment 
-const viewWrap = document.querySelector('.view_wrap');
+const viewWrap = document.querySelector('.todolist_view');
 const createWrap = document.querySelector('.create_wrap');
 const dropdown = document.querySelector('.dropdown');
 const starYN = document.querySelector('.star');
@@ -18,13 +18,15 @@ let toDoLists = [];
 
 
 const openModal = () => {
-	viewWrap.classList.add('display_none');
-	createWrap.classList.remove('display_none');
+	addBtn.classList.add('display_none');
+	toDoform.classList.remove('display_none');
+	console.log(toDoform);
 }
 
 const closeModal = () => {
-	viewWrap.classList.remove('display_none');
-	createWrap.classList.add('display_none');
+	addBtn.classList.remove('display_none');
+	toDoform.classList.add('display_none');
+	console.log(toDoform);
 
 	toDoTitle.value = "";
 	toDoContents.value = "";
@@ -47,7 +49,7 @@ const createTodoLists = (title) => {
 			<button class="deleteBtn" type="button" onclick="deleteTodo(event)">삭제</button>
 		`;
 	createLi.innerHTML = html;
-	createWrap.appendChild(createLi);
+	viewWrap.appendChild(createLi);
 
 	const toDoItem = {
 		id: newId,
@@ -57,7 +59,7 @@ const createTodoLists = (title) => {
 		contents: toDoContents.value,
 		alarmYN: alarmYN.checked,
 		completeYN: false,
-		starYN: starYN.checked
+		starYN: false
 	};
 
 	toDoLists.push(toDoItem);
@@ -109,8 +111,7 @@ const loadToDoLists = () => {
 loadToDoLists();
 
 toDoform.addEventListener("submit", handleSubmit);
-toDoform.addEventListener("click", openModal);
-addBtn.addEventListener("click", createTodoLists);
+addBtn.addEventListener("click", openModal);
 cancleBtn.addEventListener("click", closeModal);
 
 
