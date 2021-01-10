@@ -178,6 +178,11 @@ body {
   height: auto;
 }
 
+.create_form h2 {
+  font-size: 16px;
+  margin: 0 0 10px;
+}
+
 .create_form .create_header input {
   width: 90%;
   height: 30px;
@@ -207,6 +212,14 @@ body {
           transform: rotate(450deg) translate(-4px, 10px);
   -webkit-transform-origin: right bottom;
           transform-origin: right bottom;
+}
+
+.create_form .create_header .heart.check {
+  background-color: #f00;
+}
+
+.create_form .create_header .heart.check::before {
+  background-color: #f00;
 }
 
 .create_form .create_header .heart input {
@@ -289,5 +302,65 @@ body {
 .toggle label input:checked ~ .indicator::before {
   background: #0f0;
   border-radius: 50%;
+}
+
+.contents {
+  width: 100%;
+}
+
+.btn_area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+.btn_area .cancle_btn {
+  margin: 0 10px 0 0;
+}
+
+.list_show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.list label {
+  position: relative;
+  display: block;
+  margin: 0 10px 0 0;
+  width: 25px;
+  height: 25px;
+  color: #2b2b2b;
+  cursor: pointer;
+}
+
+.list input[type="checkbox"] {
+  -webkit-appearance: none;
+}
+
+.list i {
+  position: absolute;
+  top: 2px;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #2b2b2b;
+}
+
+.list input[type="checkbox"]:checked ~ i {
+  top: 1px;
+  border-top: none;
+  border-right: none;
+  height: 8px;
+  width: 15px;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
 }
 /*# sourceMappingURL=style.css.map */

@@ -41,6 +41,10 @@ body {
 .create_form {
   width: 100%;
   height: auto;
+  h2 {
+    font-size: 16px;
+    margin: 0 0 10px;
+  }
   .create_header {
     input {
       width: 90%;
@@ -64,6 +68,13 @@ body {
         border-radius: 5px 0 0 5px;
         transform: rotate(450deg) translate(-4px, 10px);
         transform-origin: right bottom;
+      }
+      &.check {
+        background-color: #f00;
+        &::before {
+          background-color: #f00;
+
+        }
       }
 
     input {
@@ -136,4 +147,50 @@ body {
       border-radius: 50%;
     }
   }
+}
+.contents {
+  width: 100%;
+}
+.btn_area {
+  display: flex;
+  flex-direction: row-reverse;
+  .cancle_btn {
+    margin: 0 10px 0 0;
+  }
+}
+
+
+//// checklist
+.list_show {
+  display: flex;
+  justify-content: flex-start;
+}
+.list label {
+  position: relative;
+  display: block;
+  margin: 0 10px 0 0;
+  width: 25px;
+  height: 25px;
+  color: $background;
+  cursor: pointer;
+}
+
+.list input[type="checkbox"] {
+  -webkit-appearance: none;
+}
+.list i {
+  position: absolute;
+  top: 2px;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 2px solid $background;
+}
+.list input[type="checkbox"]:checked ~ i {
+  top: 1px;
+  border-top: none;
+  border-right: none;
+  height: 8px;
+  width: 15px;
+  transform: rotate(-45deg);
 }

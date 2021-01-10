@@ -12,24 +12,33 @@ const toDoTitle = toDoform.querySelector(".title");
 const toDoContents = toDoform.querySelector("#contents");
 const toDoListArea = document.querySelector(".list_area");
 const addBtn = document.querySelector(".add_btn");
+const addBtnArea = document.querySelector(".add_btn_area");
+const createBtn = document.querySelector(".create_btn");
 const cancleBtn = document.querySelector(".cancle_btn");
+const heartBtn = document.querySelector(".heart");
+const heartInput = heartBtn.querySelector("input");
 
 let toDoLists = [];
 
 
 const openModal = () => {
-	addBtn.classList.add('display_none');
+	addBtnArea.classList.add('display_none');
 	toDoform.classList.remove('display_none');
-	console.log(toDoform);
 }
 
 const closeModal = () => {
-	addBtn.classList.remove('display_none');
+	addBtnArea.classList.remove('display_none');
 	toDoform.classList.add('display_none');
-	console.log(toDoform);
 
 	toDoTitle.value = "";
 	toDoContents.value = "";
+}
+
+const checkHeart = (event) => {
+	event.preventDefault();
+	heartInput.checked = !heartInput.checked;
+	
+	heartInput.checked ? heartBtn.classList.add('check') :  heartBtn.classList.remove('check');
 }
 
 const createTodoLists = (title) => {
@@ -59,7 +68,7 @@ const createTodoLists = (title) => {
 		contents: toDoContents.value,
 		alarmYN: alarmYN.checked,
 		completeYN: false,
-		starYN: false
+		starYN: heartInput.checked
 	};
 
 	toDoLists.push(toDoItem);
@@ -93,9 +102,11 @@ const handleSubmit = (e) => {
 
 	toDoTitle.value = "";
 	toDoContents.value = "";
+	closeModal();
 }
 
 const loadToDoLists = () => {
+
 	const storage = localStorage.getItem(storageName);
 
 	if (!!storage) {
@@ -113,6 +124,5 @@ loadToDoLists();
 toDoform.addEventListener("submit", handleSubmit);
 addBtn.addEventListener("click", openModal);
 cancleBtn.addEventListener("click", closeModal);
-
-
+heartBtn.addEventListener("click", checkHeart);
 
