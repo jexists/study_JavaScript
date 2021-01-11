@@ -5,6 +5,9 @@ const viewWrap = document.querySelector('.todolist_view');
 const createWrap = document.querySelector('.create_wrap');
 const dropdown = document.querySelector('.dropdown');
 const starYN = document.querySelector('.star');
+const timeSettingView = document.querySelector('.time_setting_view');
+const timeSettingViewYN = timeSettingView.querySelector('input');
+const showTimeSetting = document.querySelector('.show_time');
 const alarmYN = document.querySelector('.alarm');
 
 const toDoform = document.querySelector("#createForm");
@@ -71,6 +74,7 @@ const createTodoLists = (title) => {
 		starYN: heartInput.checked
 	};
 
+	console.log(toDoItem);
 	toDoLists.push(toDoItem);
 	saveTodoLists();
 }
@@ -117,6 +121,14 @@ const loadToDoLists = () => {
 	}
 }
 
+const alarmSetting = (event) => {
+	event.preventDefault();
+
+	timeSettingViewYN.checked = !timeSettingViewYN.checked;
+	
+	timeSettingViewYN.checked ? showTimeSetting.classList.remove('display_none') :  showTimeSetting.classList.add('display_none');
+}
+
 
 // init ========
 loadToDoLists();
@@ -125,4 +137,4 @@ toDoform.addEventListener("submit", handleSubmit);
 addBtn.addEventListener("click", openModal);
 cancleBtn.addEventListener("click", closeModal);
 heartBtn.addEventListener("click", checkHeart);
-
+timeSettingView.addEventListener("click", alarmSetting);
