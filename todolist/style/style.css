@@ -188,7 +188,17 @@ body {
   height: 30px;
 }
 
-.create_form .create_header .heart {
+.create_form .create_header .time_setting {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 10px 0 4px;
+}
+
+.heart {
   display: inline-block;
   width: 18px;
   height: 10px;
@@ -201,7 +211,7 @@ body {
   cursor: pointer;
 }
 
-.create_form .create_header .heart::before {
+.heart::before {
   content: "";
   display: inline-block;
   width: 18px;
@@ -214,29 +224,19 @@ body {
           transform-origin: right bottom;
 }
 
-.create_form .create_header .heart.check {
+.heart.check {
   background-color: #f00;
 }
 
-.create_form .create_header .heart.check::before {
+.heart.check::before {
   background-color: #f00;
 }
 
-.create_form .create_header .heart input {
+.heart input {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
   display: none;
-}
-
-.create_form .time_setting {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin: 10px 0 4px;
 }
 
 .toggle label {
@@ -362,5 +362,17 @@ body {
   width: 15px;
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
+}
+
+.list_title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.list_title p {
+  width: 100%;
+  line-height: 25px;
 }
 /*# sourceMappingURL=style.css.map */

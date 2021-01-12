@@ -18,7 +18,7 @@ const addBtn = document.querySelector(".add_btn");
 const addBtnArea = document.querySelector(".add_btn_area");
 const createBtn = document.querySelector(".create_btn");
 const cancleBtn = document.querySelector(".cancle_btn");
-const heartBtn = document.querySelector(".heart");
+const heartBtn = document.querySelector("label.heart");
 const heartInput = heartBtn.querySelector("input");
 
 let toDoLists = [];

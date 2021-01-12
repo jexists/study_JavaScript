@@ -50,47 +50,46 @@ body {
       width: 90%;
       height: 30px;
     }
-    .heart {
-      display: inline-block;
-      width: 18px;
-      height: 10px;
-      background-color: $background;
-      border-radius: 5px 0 0 5px;
-      transform: scale(0.9) rotate(45deg) translateY(10px);
-      transform-origin: right bottom;
-      cursor: pointer;
-      &::before {
-        content: "";
-        display: inline-block;
-        width: 18px;
-        height: 10px;
-        background-color: $background;
-        border-radius: 5px 0 0 5px;
-        transform: rotate(450deg) translate(-4px, 10px);
-        transform-origin: right bottom;
-      }
-      &.check {
-        background-color: #f00;
-        &::before {
-          background-color: #f00;
 
-        }
-      }
-
-    input {
-      appearance: none;
-      display: none;
+    .time_setting {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0 4px;
     }
-    }
-  }
-  .time_setting {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 0 4px;
   }
 }
 
+.heart {
+  display: inline-block;
+  width: 18px;
+  height: 10px;
+  background-color: $background;
+  border-radius: 5px 0 0 5px;
+  transform: scale(0.9) rotate(45deg) translateY(10px);
+  transform-origin: right bottom;
+  cursor: pointer;
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 10px;
+    background-color: $background;
+    border-radius: 5px 0 0 5px;
+    transform: rotate(450deg) translate(-4px, 10px);
+    transform-origin: right bottom;
+  }
+  &.check {
+    background-color: #f00;
+    &::before {
+      background-color: #f00;
+    }
+  }
 
+  input {
+    appearance: none;
+    display: none;
+  }
+}
 
 .toggle {
   label {
@@ -159,7 +158,6 @@ body {
   }
 }
 
-
 //// checklist
 .list_show {
   display: flex;
@@ -193,4 +191,13 @@ body {
   height: 8px;
   width: 15px;
   transform: rotate(-45deg);
+}
+
+.list_title {
+  display: flex;
+  width: 100%;
+  p {
+    width: 100%;
+    line-height: 25px;
+  }
 }
