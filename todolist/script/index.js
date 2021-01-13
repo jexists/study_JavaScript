@@ -40,26 +40,45 @@ const closeModal = () => {
 const checkHeart = (event) => {
 	event.preventDefault();
 	heartInput.checked = !heartInput.checked;
-	
-	heartInput.checked ? heartBtn.classList.add('check') :  heartBtn.classList.remove('check');
+
+	heartInput.checked ? heartBtn.classList.add('check') : heartBtn.classList.remove('check');
 }
 
-const createTodoLists = (title) => {
+const createTodoLists = (title, heart) => {
 	const newId = toDoLists.length + 1;
 	const createLi = document.createElement('li');
 	createLi.id = newId;
 
+	console.log(heart);
 	const html = `
-			<label for="checkBox">
-			<input type="checkbox" id="checkBox" />
-			<span>완료</span>
-			</label>
-			<a>
-				<span>${title}</span>
-			</a>
-			<button type="button">수정</button>
-			<button class="deleteBtn" type="button" onclick="deleteTodo(event)">삭제</button>
+	<div class="list_show">
+	<label for="complete">
+		<input type="checkbox" id="complete"/>
+		<i></i>
+	</label>
+	<div class="list_title">
+		<p>${title}</p>
+		<span class="heart ${heart ? 'check': ''}"></span>
+	</div>
+</div>
+<div class="display_none">
+	<div class="time_setting">
+		<p class="date">2020</p>
+		<p class="time"></p>
+	</div>
+	<div class="alarm_setting">
+		<p>알람 몇분전</p>
+	</div>
+	<div class="contents">
+		블라블라
+	</div>
+	<div>
+		<button type="button">수정</button>
+		<button class="deleteBtn" type="button" onclick="deleteTodo(event)">삭제</button>
+	</div>
+</div>
 		`;
+		if(heart) {}
 	createLi.innerHTML = html;
 	viewWrap.appendChild(createLi);
 
@@ -71,7 +90,7 @@ const createTodoLists = (title) => {
 		contents: toDoContents.value,
 		alarmYN: alarmYN.checked,
 		completeYN: false,
-		starYN: heartInput.checked
+		heartYN: heartInput.checked
 	};
 
 	console.log(toDoItem);
@@ -102,7 +121,8 @@ const handleSubmit = (e) => {
 	if (!toDoTitle.value) { return; }
 
 	const title = toDoTitle.value;
-	createTodoLists(title);
+	const heart = heartInput.checked;
+	createTodoLists(title, heart);
 
 	toDoTitle.value = "";
 	toDoContents.value = "";
@@ -116,7 +136,7 @@ const loadToDoLists = () => {
 	if (!!storage) {
 		const parsedToDos = JSON.parse(storage);
 		parsedToDos.forEach((toDo) => {
-			createTodoLists(toDo.title);
+			createTodoLists(toDo.title, toDo.heartYN);
 		});
 	}
 }
@@ -125,8 +145,8 @@ const alarmSetting = (event) => {
 	event.preventDefault();
 
 	timeSettingViewYN.checked = !timeSettingViewYN.checked;
-	
-	timeSettingViewYN.checked ? showTimeSetting.classList.remove('display_none') :  showTimeSetting.classList.add('display_none');
+
+	timeSettingViewYN.checked ? showTimeSetting.classList.remove('display_none') : showTimeSetting.classList.add('display_none');
 }
 
 
