@@ -90,7 +90,7 @@ const createTodoLists = (title, heart) => {
 		contents: toDoContents.value,
 		alarmYN: alarmYN.checked,
 		completeYN: false,
-		heartYN: heartInput.checked
+		heartYN: heart || heartInput.checked
 	};
 
 	console.log(toDoItem);
