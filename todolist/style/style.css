@@ -331,7 +331,7 @@ body {
           justify-content: flex-start;
 }
 
-.list label {
+.complete label {
   position: relative;
   display: block;
   margin: 0 10px 0 0;
@@ -341,11 +341,11 @@ body {
   cursor: pointer;
 }
 
-.list input[type="checkbox"] {
+.complete input[type="checkbox"] {
   -webkit-appearance: none;
 }
 
-.list i {
+.complete i {
   position: absolute;
   top: 2px;
   display: inline-block;
@@ -354,7 +354,7 @@ body {
   border: 2px solid #2b2b2b;
 }
 
-.list input[type="checkbox"]:checked ~ i {
+.complete input[type="checkbox"]:checked ~ i {
   top: 1px;
   border-top: none;
   border-right: none;

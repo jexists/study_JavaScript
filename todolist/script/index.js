@@ -39,9 +39,11 @@ const closeModal = () => {
 
 const checkHeart = (event) => {
 	event.preventDefault();
+	console.log(event.srcElement);
+	event.target.classList.toggle("check");
+	
 	heartInput.checked = !heartInput.checked;
-
-	heartInput.checked ? heartBtn.classList.add('check') : heartBtn.classList.remove('check');
+	// heartInput.checked ? heartBtn.classList.add('check') : heartBtn.classList.remove('check');
 }
 
 const createTodoLists = (title, heart) => {
@@ -52,31 +54,34 @@ const createTodoLists = (title, heart) => {
 	console.log(heart);
 	const html = `
 	<div class="list_show">
-	<label for="complete">
-		<input type="checkbox" id="complete"/>
-		<i></i>
-	</label>
-	<div class="list_title">
-		<p>${title}</p>
-		<span class="heart ${heart ? 'check': ''}"></span>
-	</div>
-</div>
-<div class="display_none">
-	<div class="time_setting">
-		<p class="date">2020</p>
-		<p class="time"></p>
-	</div>
-	<div class="alarm_setting">
-		<p>알람 몇분전</p>
-	</div>
-	<div class="contents">
-		블라블라
-	</div>
-	<div>
-		<button type="button">수정</button>
-		<button class="deleteBtn" type="button" onclick="deleteTodo(event)">삭제</button>
-	</div>
-</div>
+              <label for="complete" class="complete">
+                <input type="checkbox" id="complete" />
+                <i></i>
+              </label>
+              <div class="list_title">
+                <p>${title}</p>
+                <label for="heart" class="${heart ? 'heart check':'heart'}" onClick="checkHeart(event)">
+                  <input type="checkbox" id="heart"/>
+                </label>
+              </div>
+            </div>
+            <div class="display_none">
+              <div class="time_setting">
+                <p class="date">2020</p>
+                <p class="time"></p>
+              </div>
+              <div class="alarm_setting">
+                <p>알람 몇분전</p>
+              </div>
+              <div class="contents">
+                블라블라
+              </div>
+              <div>
+                <button type="button">수정</button>
+                <button class="deleteBtn" type="button" onclick="deleteTodo(event)">삭제</button>
+              </div>
+            </div>
+          </li>
 		`;
 		if(heart) {}
 	createLi.innerHTML = html;
