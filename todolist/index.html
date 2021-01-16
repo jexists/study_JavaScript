@@ -44,6 +44,9 @@
         <div class="add_btn_area">
           <button type="button" class="add_btn"> <span>+</span> 할 일 추가하기</button>
         </div>
+
+        
+        <!-- 투두리스트 ////////////////////////////////////////////////////// -->
         <form id="createForm" class="create_form display_none">
           <h2>할 일 추가하기</h2>
           <div class="create_header">
@@ -64,23 +67,32 @@
             </div>
           </div>
           <div class="show_time display_none">
-            <div>
-              <input type="date" />
-              <input type="time" />
+            <div class="datetime">
+              <input type="date" class="date"/>
+              <input type="time" class="time" />
             </div>
 
-            <label for="alarmYN" class="alarm_area">
-              <input type="checkbox" id="alarmYN" class="alarm" />
-              <span>알림설정</span>
-            </label>
+            <div class="alaram_setting">
+              <span>알림 설정</span>
+              <div class="toggle">
 
-            <label for="cars">알림시간</label>
-            <select name="cars" id="cars">
-              <option value="0.5">30분전</option>
-              <option value="1">1시간</option>
-              <option value="2">2시간</option>
-              <option value="24">하루전</option>
-            </select>
+                <label for="alarmYN" class="alarm_area">
+                  <input type="checkbox" id="alarmYN" class="alarm" />
+                  <span></span>
+                  <i class="indicator"></i>
+                </label>
+              </div>
+            </div>
+
+            <div class="show_alram display_none">
+              <label for="cars">알림시간</label>
+              <select name="cars" id="cars">
+                <option value="0.5">30분전</option>
+                <option value="1">1시간</option>
+                <option value="2">2시간</option>
+                <option value="24">하루전</option>
+              </select>
+            </div>
           </div>
 
 
@@ -101,11 +113,11 @@
         </form>
       </section>
 
-      <!-- 투두리스트 -->
+      <!-- 투두리스트 ////////////////////////////////////////////////////// -->
       <section class="view_wrap">
         <ul class="todolist_view">
 
-          <li class="list">
+          <!-- <li class="list">
             <div class="list_show">
               <label for="complete" class="complete">
                 <input type="checkbox" id="complete" />
@@ -134,7 +146,7 @@
                 <button class="deleteBtn" type="button" onclick="deleteTodo(event)">삭제</button>
               </div>
             </div>
-          </li>
+          </li> -->
         </ul>
       </section>
     </main>

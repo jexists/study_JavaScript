@@ -142,6 +142,10 @@ body {
   display: none;
 }
 
+.contents {
+  width: 100%;
+}
+
 .wrap {
   width: 320px;
   margin: auto;
@@ -151,7 +155,7 @@ body {
 
 .wrap .todolist_area {
   min-height: calc(100vh - 60px);
-  padding: 18px 22px;
+  padding: 15px 18px;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   border-left: 1px solid rgba(255, 255, 255, 0.2);
   -webkit-box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
@@ -164,7 +168,6 @@ body {
   display: block;
   width: 100%;
   padding: 8px 0;
-  margin: 0 0 18px;
   border: 1px solid #767676;
   text-align: center;
 }
@@ -188,7 +191,8 @@ body {
   height: 30px;
 }
 
-.create_form .create_header .time_setting {
+.create_form .alaram_setting,
+.create_form .time_setting {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -196,6 +200,65 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin: 10px 0 4px;
+}
+
+.show_time .datetime {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.show_time .time {
+  width: 40%;
+  margin: 0 0 0 5px;
+}
+
+.show_time .date {
+  width: 60%;
+}
+
+.show_time .time:hover,
+.show_time .date:hover {
+  background-color: transparent;
+}
+
+.btn_area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+.btn_area .cancle_btn {
+  margin: 0 10px 0 0;
+}
+
+.todolist_view {
+  margin: 15px 0 0;
+}
+
+.todolist_view .list_show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.todolist_view .list_show .list_title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.todolist_view .list_show .list_title p {
+  width: 100%;
+  line-height: 25px;
 }
 
 .heart {
@@ -280,10 +343,6 @@ body {
           transform: scale(0.8);
 }
 
-.toggle label input:checked ~ .indicator {
-  left: 20px;
-}
-
 .toggle label .indicator::before {
   content: "";
   position: absolute;
@@ -299,39 +358,16 @@ body {
   border-radius: 50%;
 }
 
+.toggle label input:checked ~ .indicator {
+  left: 20px;
+}
+
 .toggle label input:checked ~ .indicator::before {
   background: #0f0;
   border-radius: 50%;
 }
 
-.contents {
-  width: 100%;
-}
-
-.btn_area {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
-}
-
-.btn_area .cancle_btn {
-  margin: 0 10px 0 0;
-}
-
-.list_show {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-}
-
-.complete label {
+.complete {
   position: relative;
   display: block;
   margin: 0 10px 0 0;
@@ -345,15 +381,6 @@ body {
   -webkit-appearance: none;
 }
 
-.complete i {
-  position: absolute;
-  top: 2px;
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  border: 2px solid #2b2b2b;
-}
-
 .complete input[type="checkbox"]:checked ~ i {
   top: 1px;
   border-top: none;
@@ -364,15 +391,12 @@ body {
           transform: rotate(-45deg);
 }
 
-.list_title {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-}
-
-.list_title p {
-  width: 100%;
-  line-height: 25px;
+.complete i {
+  position: absolute;
+  top: 2px;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #2b2b2b;
 }
 /*# sourceMappingURL=style.css.map */
