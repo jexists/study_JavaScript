@@ -22,6 +22,7 @@ const createBtn = document.querySelector(".create_btn");
 const cancleBtn = document.querySelector(".cancle_btn");
 const heartBtn = document.querySelector("label.heart");
 const heartInput = heartBtn.querySelector("input");
+const completeBtn = document.querySelector("label.complete");
 
 let toDoLists = [];
 
@@ -41,11 +42,17 @@ const closeModal = () => {
 
 const checkHeart = (event) => {
 	event.preventDefault();
-	console.log(event.srcElement);
 	event.target.classList.toggle("check");
 
 	heartInput.checked = !heartInput.checked;
 	// heartInput.checked ? heartBtn.classList.add('check') : heartBtn.classList.remove('check');
+}
+
+const checkComplete = (event) => {
+	event.preventDefault();
+	event.srcElement.parentNode.nextElementSibling.children[0].classList.toggle('complete');
+	console.log(event.srcElement.parentNode.nextElementSibling.children[0]);
+	event.target.classList.toggle("check");
 }
 
 const createTodoLists = (title, contents, heart, deadlineDate, deadlineTime) => {
@@ -59,7 +66,7 @@ const createTodoLists = (title, contents, heart, deadlineDate, deadlineTime) => 
 		<div class="list_show">
       <label for="complete" class="complete">
         <input type="checkbox" id="complete" />
-        <i></i>
+        <i onClick="checkComplete(event)"></i>
       </label>
       <div class="list_title">
         <p>${title}</p>
