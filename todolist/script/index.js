@@ -9,6 +9,9 @@ const timeSettingView = document.querySelector('.time_setting_view');
 const timeSettingViewYN = timeSettingView.querySelector('input');
 const showTimeSetting = document.querySelector('.show_time');
 const alarmYN = document.querySelector('.alarm');
+const showTimeAlarm = document.querySelector('.alarm_area');
+const alarmTime = showTimeAlarm.querySelector('input');
+const showAlarmTime = document.querySelector('.show_alaram');
 
 const toDoform = document.querySelector("#createForm");
 const toDoTitle = toDoform.querySelector(".title");
@@ -168,6 +171,15 @@ const alarmSetting = (event) => {
 	timeSettingViewYN.checked ? showTimeSetting.classList.remove('display_none') : showTimeSetting.classList.add('display_none');
 }
 
+const timeSetting = (event) => {
+	event.preventDefault();
+
+	console.log(showTimeAlarm);
+	alarmTime.checked = !alarmTime.checked;
+
+	alarmTime.checked ? showAlarmTime.classList.remove('display_none') : showAlarmTime.classList.add('display_none');
+}
+
 
 // init ========
 loadToDoLists();
@@ -177,3 +189,4 @@ addBtn.addEventListener("click", openModal);
 cancleBtn.addEventListener("click", closeModal);
 heartBtn.addEventListener("click", checkHeart);
 timeSettingView.addEventListener("click", alarmSetting);
+showTimeAlarm.addEventListener("click", timeSetting);
