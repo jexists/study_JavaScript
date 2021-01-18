@@ -51,6 +51,24 @@ const checkHeart = (event) => {
 	// heartInput.checked ? heartBtn.classList.add('check') : heartBtn.classList.remove('check');
 }
 
+const editHeart = (event) => {
+	event.preventDefault();
+	event.target.classList.toggle("check");
+
+	heartInput.checked = !heartInput.checked;
+
+	const selLiElement = event.target.closest('.list_show').parentNode;
+	console.log(selLiElement);
+
+	const changeHeart = toDoLists.map(function (toDo) {
+		if (toDo.id === parseInt(selLiElement.id)) {
+			toDo.heartYN = !toDo.heartYN;
+		}
+		return toDo;
+	});
+	localStorage.setItem(storageName, JSON.stringify(toDoLists));
+}
+
 const checkComplete = (event) => {
 	event.preventDefault();
 	event.srcElement.parentNode.nextElementSibling.children[0].classList.toggle('complete');
@@ -73,7 +91,7 @@ const createTodoLists = (title, contents, heart, deadlineDate, deadlineTime) => 
       </label>
       <div class="list_title">
         <p>${title}</p>
-        <label for="heart" class="${heart ? 'heart check' : 'heart'}" onClick="checkHeart(event)">
+        <label for="heart" class="${heart ? 'heart check' : 'heart'}" onClick="editHeart(event)">
           <input type="checkbox" id="heart"/>
         </label>
       </div>
@@ -95,7 +113,7 @@ const createTodoLists = (title, contents, heart, deadlineDate, deadlineTime) => 
       </div>
     </div>
 	`;
-	
+
 	createLi.innerHTML = html;
 	viewWrap.appendChild(createLi);
 
