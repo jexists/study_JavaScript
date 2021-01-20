@@ -72,25 +72,35 @@ const editHeart = (event) => {
 const checkComplete = (event) => {
 	event.preventDefault();
 	event.srcElement.parentNode.nextElementSibling.children[0].classList.toggle('complete');
-	console.log(event.srcElement.parentNode.nextElementSibling.children[0]);
 	event.target.classList.toggle("check");
+
+	const selLiElement = event.target.closest('.list_show').parentNode;
+	
+	const complete = toDoLists.map(function (toDo) {
+		if (toDo.id === parseInt(selLiElement.id)) {
+			toDo.completeYN = !toDo.completeYN;
+		}
+		return toDo;
+	});
+	console.log(toDoLists);
+	localStorage.setItem(storageName, JSON.stringify(toDoLists));
 }
 
-const createTodoLists = (title, contents, heart, deadlineDate, deadlineTime) => {
+const createTodoLists = (title, contents, heart, deadlineDate, deadlineTime, complete) => {
 	const newId = toDoLists.length + 1;
 	const createLi = document.createElement('li');
 	createLi.id = newId;
 
-	console.log(toDoDeadlineDate);
+	console.log(complete);
 	console.log(toDoDeadlineDate.value);
 	const html = `
 		<div class="list_show">
       <label for="complete" class="complete">
         <input type="checkbox" id="complete" />
-        <i onClick="checkComplete(event)"></i>
+        <i class="${complete ? 'check' : ''}" onClick="checkComplete(event)"></i>
       </label>
       <div class="list_title">
-        <p>${title}</p>
+        <p class="${complete ? 'complete' : ''}">${title}</p>
         <label for="heart" class="${heart ? 'heart check' : 'heart'}" onClick="editHeart(event)">
           <input type="checkbox" id="heart"/>
         </label>
@@ -125,7 +135,7 @@ const createTodoLists = (title, contents, heart, deadlineDate, deadlineTime) => 
 		deadlineTime: deadlineTime || toDoDeadlineTime.value,
 		contents: contents || toDoContents.value,
 		alarmYN: alarmYN.checked,
-		completeYN: false,
+		completeYN: complete,
 		heartYN: heart || heartInput.checked
 	};
 
@@ -162,7 +172,7 @@ const handleSubmit = (e) => {
 	const deadlineDate = toDoDeadlineDate.value;
 	const deadlineTime = toDoDeadlineTime.value;
 
-	createTodoLists(title, contents, heart, deadlineDate, deadlineTime);
+	createTodoLists(title, contents, heart, deadlineDate, deadlineTime, false);
 
 	toDoTitle.value = "";
 	toDoContents.value = "";
@@ -176,7 +186,7 @@ const loadToDoLists = () => {
 	if (!!storage) {
 		const parsedToDos = JSON.parse(storage);
 		parsedToDos.forEach((toDo) => {
-			createTodoLists(toDo.title, toDo.contents, toDo.heartYN, toDo.deadlineDate, toDo.deadlineTime);
+			createTodoLists(toDo.title, toDo.contents, toDo.heartYN, toDo.deadlineDate, toDo.deadlineTime, toDo.completeYN);
 		});
 	}
 }
