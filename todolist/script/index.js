@@ -58,7 +58,7 @@ const editHeart = (event) => {
 	heartInput.checked = !heartInput.checked;
 
 	const selLiElement = event.target.closest('.list_show').parentNode;
-	console.log(selLiElement);
+	// console.log(selLiElement);
 
 	const changeHeart = toDoLists.map(function (toDo) {
 		if (toDo.id === parseInt(selLiElement.id)) {
@@ -82,8 +82,15 @@ const checkComplete = (event) => {
 		}
 		return toDo;
 	});
-	console.log(toDoLists);
+	// console.log(toDoLists);
 	localStorage.setItem(storageName, JSON.stringify(toDoLists));
+}
+
+const showDetail = (event) => {
+	const selLiElement = event.target.closest('.list_show').parentNode;
+
+	selLiElement.querySelector('.list_detail').classList.toggle('display_none');
+
 }
 
 const createTodoLists = (title, contents, heart, deadlineDate, deadlineTime, complete) => {
@@ -91,8 +98,8 @@ const createTodoLists = (title, contents, heart, deadlineDate, deadlineTime, com
 	const createLi = document.createElement('li');
 	createLi.id = newId;
 
-	console.log(complete);
-	console.log(toDoDeadlineDate.value);
+	// console.log(complete);
+	// console.log(toDoDeadlineDate.value);
 	const html = `
 		<div class="list_show">
       <label for="complete" class="complete">
@@ -100,13 +107,13 @@ const createTodoLists = (title, contents, heart, deadlineDate, deadlineTime, com
         <i class="${complete ? 'check' : ''}" onClick="checkComplete(event)"></i>
       </label>
       <div class="list_title">
-        <p class="${complete ? 'complete' : ''}">${title}</p>
+        <p class="${complete ? 'complete' : ''}" onClick="showDetail(event)">${title}</p>
         <label for="heart" class="${heart ? 'heart check' : 'heart'}" onClick="editHeart(event)">
           <input type="checkbox" id="heart"/>
         </label>
       </div>
     </div>
-    <div class="display_none">
+    <div class="list_detail display_none">
       <div class="time_setting">
         <p class="date">${deadlineDate}</p>
         <p class="time">${deadlineTime}</p>
@@ -145,7 +152,7 @@ const createTodoLists = (title, contents, heart, deadlineDate, deadlineTime, com
 }
 
 const deleteTodo = (event) => {
-	console.log(event);
+	// console.log(event);
 	const selToDoList = event.target;
 	const selLiElement = selToDoList.parentNode;
 	selLiElement.parentNode.removeChild(selLiElement);
@@ -154,9 +161,10 @@ const deleteTodo = (event) => {
 		return toDo.id !== parseInt(selLiElement.id);
 	});
 	toDoLists = cleanToDos;
-	console.log(cleanToDos);
+	// console.log(cleanToDos);
 	saveTodoLists();
 }
+
 
 const saveTodoLists = () => {
 	localStorage.setItem(storageName, JSON.stringify(toDoLists));
@@ -191,6 +199,7 @@ const loadToDoLists = () => {
 	}
 }
 
+
 const alarmSetting = (event) => {
 	event.preventDefault();
 
@@ -202,7 +211,7 @@ const alarmSetting = (event) => {
 const timeSetting = (event) => {
 	event.preventDefault();
 
-	console.log(showTimeAlarm);
+	// console.log(showTimeAlarm);
 	alarmTime.checked = !alarmTime.checked;
 
 	alarmTime.checked ? showAlarmTime.classList.remove('display_none') : showAlarmTime.classList.add('display_none');
