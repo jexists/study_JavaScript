@@ -44,9 +44,9 @@ basic JavaScript game and algorism
 
 #### 키보드 드럼 게임
 
-[[참고자료|https://www.youtube.com/watch?v=VuN8qwZoego&list=PLu8EoSxDXHP6CGK4YVJhL_VWetA865GOH&index=1]]
 #### 투두리스트
 
 
-
+[[테스트]]
+[[테스트|위키문서]]
 
