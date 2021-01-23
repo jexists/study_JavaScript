@@ -75,7 +75,7 @@ const checkComplete = (event) => {
 	event.target.classList.toggle("check");
 
 	const selLiElement = event.target.closest('.list_show').parentNode;
-	
+
 	const complete = toDoLists.map(function (toDo) {
 		if (toDo.id === parseInt(selLiElement.id)) {
 			toDo.completeYN = !toDo.completeYN;
@@ -113,7 +113,7 @@ const createTodoLists = (title, contents, heart, deadlineDate, deadlineTime, com
         </label>
       </div>
     </div>
-    <div class="list_detail display_none">
+		<div class="list_detail display_none">
       <div class="time_setting">
         <p class="date">${deadlineDate}</p>
         <p class="time">${deadlineTime}</p>
@@ -152,16 +152,15 @@ const createTodoLists = (title, contents, heart, deadlineDate, deadlineTime, com
 }
 
 const deleteTodo = (event) => {
-	// console.log(event);
-	const selToDoList = event.target;
-	const selLiElement = selToDoList.parentNode;
+	event.preventDefault();
+
+	const selLiElement = event.target.closest('.list_detail').parentNode;
 	selLiElement.parentNode.removeChild(selLiElement);
 
 	const cleanToDos = toDoLists.filter(function (toDo) {
 		return toDo.id !== parseInt(selLiElement.id);
 	});
 	toDoLists = cleanToDos;
-	// console.log(cleanToDos);
 	saveTodoLists();
 }
 

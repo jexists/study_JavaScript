@@ -46,7 +46,3 @@ basic JavaScript game and algorism
 
 #### 투두리스트
 
-
-[[테스트]]
-[[테스트|위키문서]]
-
