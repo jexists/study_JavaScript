@@ -217,6 +217,8 @@ const timeSetting = (event) => {
 }
 
 
+
+
 // init ========
 loadToDoLists();
 
@@ -226,3 +228,4 @@ cancleBtn.addEventListener("click", closeModal);
 heartBtn.addEventListener("click", checkHeart);
 timeSettingView.addEventListener("click", alarmSetting);
 showTimeAlarm.addEventListener("click", timeSetting);
+
