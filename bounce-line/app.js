@@ -1,4 +1,5 @@
 import { BounceString } from './bouncestrings.js';
+import { Ball } from './ball.js';
 
 class App {
   constructor() {
@@ -16,6 +17,11 @@ class App {
     window.addEventListener('resize', this.resize.bind(this), false);
     this.resize();
 
+    // this.stageWidth = document.body.clientWidth;
+    // this.stageHeight = document.body.clientHeight;
+
+    this.ball = new Ball(this.stageWidth, this.stageHeight, 70, 6);
+
     document.addEventListener('pointerdown', this.onDown.bind(this), false);
     document.addEventListener('pointermove', this.onMove.bind(this), false);
     document.addEventListener('pointerup', this.onUp.bind(this), false);
@@ -32,17 +38,36 @@ class App {
 
     this.ctx.scale(this.pixelRatio, this.pixelRatio);
 
-    this.strings = [
-      new BounceString(
-        {
-          x1: 50,
-          y1: this.stageHeight / 2,
-          x2: this.stageWidth - 50,
-          y2: this.stageHeight / 2
-        },
-        '#ff5038'
+    const xGap = 20;
+    const yGap = 20;
+    const x1 = xGap;
+    const x2 = this.stageWidth - xGap;
+    const total = Math.floor((this.stageHeight - yGap) / yGap);
+
+    this.strings = [];
+
+    for (let i = 0; i <total; i++) {
+      this.strings[i] = new BounceString({
+        x1: x1,
+        y1: i * yGap + yGap,
+        x2: x2,
+        y2: i * yGap + yGap,
+      },
+      '#ff5038'
       )
-    ]
+    }
+
+    // this.strings = [
+    //   new BounceString(
+    //     {
+    //       x1: 50,
+    //       y1: this.stageHeight / 2,
+    //       x2: this.stageWidth - 50,
+    //       y2: this.stageHeight / 2
+    //     },
+    //     '#ff5038'
+    //   )
+    // ]
   }
 
   animate() {
@@ -52,9 +77,12 @@ class App {
 
     if (this.strings.length > 0) {
       for (let i =0; i < this.strings.length; i++) {
-        this.strings[i].animate(this.ctx, this.moveX, this.moveY);
+        // this.strings[i].animate(this.ctx, this.moveX, this.moveY);
+        this.strings[i].animate(this.ctx, this.ball.x, this.ball.y);
       }
     }
+
+    this.ball.animate(this.ctx, this.stageWidth, this.stageHeight);
   }
 
   onDown(e) {
