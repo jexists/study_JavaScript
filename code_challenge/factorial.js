@@ -13,3 +13,16 @@ const factorial = (n) => {
 }
 
 console.log(factorial(8)); //40320
+
+//////////////////////////////////////////
+const answer = (num) => {
+  let result = 1;
+  for (let i = 1; i <= num; i++) {
+    // result = result * i;
+    result *= i;
+  }
+  return result;
+}
+
+console.log(answer(8)); //40320
+
