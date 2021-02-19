@@ -11,7 +11,15 @@ const titleCase = (str) => {
   return words.join(' ');
 }
 
+const titleCaseMap = (str) => {
+  const titled = str.toLowerCase().split(' ').map((elem) => {
+    return elem[0].toUpperCase() + elem.slice(1);
+  });
+  return titled.join(' ');
+}
+
 // titleCase('I`m a little tea pot');
+console.log(titleCaseMap('I`m a little tea pot'));
 console.log(titleCase('I`m a little tea pot'));
 let insideOut = ['sadness', 'anger'];
 insideOut[0] = "happy"; // insideOut = ['joy', 'anger'];
