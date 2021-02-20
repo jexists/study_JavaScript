@@ -19,24 +19,26 @@ console.log(all_teamlists);
 
 const teamSearch = (value, teamlists) => {
   teamlists.filter((all_teamlists) => {
-    console.log(all_teamlists.en.toLowerCase().indexOf(value.toLowerCase()) >= 0);
+    // console.log(all_teamlists.en.toLowerCase().indexOf(value.toLowerCase()) >= 0);
 
-    all_teamlists.en.toLowerCase().indexOf(value.toLowerCase()) >= 0 ||
-    all_teamlists.ko.toLowerCase().indexOf(value.toLowerCase()) >= 0;
+    console.log (all_teamlists.en.toLowerCase().indexOf(value.toLowerCase()) >= 0 ||
+    all_teamlists.ko.toLowerCase().indexOf(value.toLowerCase()) >= 0);
     
   })
     
   // console.log(value.cal);
   
   // this.filteredTeamOptions = ['abc', 'cbd'];
-  // this..map((list) => {
+  // this.map((list) => {
   //   console.log(list.teams);
   //   list.teams.filter(option => {
   //     console.log('option', option);
   //   })
   // })
 }
-console.log(teamSearch('al', all_teamlists));
+
+// console.log(teamSearch('al', all_teamlists));
+teamSearch('al', all_teamlists);
 
 // const input = document.querySelector('input');
 // input.addEventListener('input', teamSearch);
