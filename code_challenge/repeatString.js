@@ -15,5 +15,14 @@ const repeatStringByFor = ((str, num) => {
   }
   return final;
 });
-
 console.log(repeatStringByFor('abc', 3));
+
+
+const repeatNumTimes = ((str, num) => {
+  if (num < 0) return '';
+  if (num === 1) return str;
+
+  return str + repeatNumTimes(str, num - 1);
+})
+
+console.log(repeatNumTimes('abc', 3));
