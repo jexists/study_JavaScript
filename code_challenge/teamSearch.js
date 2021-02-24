@@ -47,7 +47,7 @@ const teamSearch2 = (value, teamlists) => {
 }
 
 // teamSearch2('arsen', teamlists);
-console.log(teamSearch2('arsen', teamlists));
+// console.log(teamSearch2('arsen', teamlists));
 
 const teamSearch = (value, teamlists) => {
   teamlists.filter((all_teamlists) => {
@@ -71,7 +71,60 @@ const teamSearch = (value, teamlists) => {
 }
 
 // console.log(teamSearch('al', all_teamlists));
-teamSearch('al', all_teamlists);
+// teamSearch('al', all_teamlists);
 
 // const input = document.querySelector('input');
 // input.addEventListener('input', teamSearch);
+
+
+
+
+const teamSearch4 = (value) => {
+  return teamlists.filter(group =>
+    group.teams.filter(team => {
+      if (
+        team.en.toLowerCase().indexOf(value.toLowerCase()) >= 0 ||
+        team.ko.toLowerCase().indexOf(value.toLowerCase()) >= 0
+      ) {
+        return team;
+      }
+    })
+  );
+
+}
+
+console.log(teamSearch4('아스'));
+
+const searchGit = (value) => {
+  const filterOption = [];
+  teamlists.filter(data => {
+    data.teams.find(team => {
+      if (team.en.toLowerCase().indexOf(value.toLowerCase()) >= 0 ||
+        team.ko.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
+          filterOption.push({
+            'group': data.group,
+            'teams': [team]
+          });
+        }
+    })
+  })
+  return filterOption;
+}
+
+
+console.log(searchGit('아스'));
+
+
+const searchGit2 = (value) => {
+  teamlists.filter(data => {
+    data.teams.find(team => {
+      if (team.en.toLowerCase().indexOf(value.toLowerCase()) >= 0 ||
+        team.ko.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
+        console.log(team);
+        }
+    })
+  });
+}
+
+
+console.log(searchGit2('아스'));
