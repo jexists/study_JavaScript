@@ -1,28 +1,32 @@
 console.log('스크립트 연결 완료!')
 
-document.getElementById('fileUpload').addEventListener('change',  function(e) {
-  selectedFile = e.target.files[0];
+const input = document.getElementById('fileUpload');
+input.addEventListener('change', function () {
+  readXlsxFile(input.files[0]).then(function (data) {
+    // console.log(data);
+    let i = 0;
+    data.map((data, index) => {
+      if (i == 0) {
+        let view = document.getElementById('jsonData');
+        generateArray(view, data);
+      }
+      if (i > 0) {
+        let view = document.getElementById('jsonData');
+        generateObject(view, data)
+      }
+      i++;
+    })
+  });
 });
 
-document.getElementById('uploadExcel').addEventListener('click', function() {
-  var fileRender = new fileRender();
-  if (selectedFile) { 
-    fileRender.onload = function(e) {
-      var data = e.target.result;
-
-      var workbook = XLSX.read(data, {
-        type: 'binary'
-      });
-
-      workbook.SheetNames.forEach(sheet => {
-        let rowObject = XLSX.utils.sheet_to_row_object_array(
-          workbook.Sheets[sheet]
-        );
-
-        let jsonObject = JSON.stringify(rowObject);
-        document.getElementById('jsonData').innerHTML = jsonObject;
-      });
-    };
-    fileRender.readAsBinaryString(selectedFile);
-  }
-})
+function generateArray(view, data) {
+  // console.log(view);
+  console.log('property', data);
+}
+const teams = []
+function generateObject(view, data) {
+  // console.log(jsonData);
+  teams.push(data[5]);
+  // console.log('team: [' + data[5] +']');
+  console.log(teams);
+}
