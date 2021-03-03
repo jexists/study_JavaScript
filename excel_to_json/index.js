@@ -6,12 +6,13 @@ input.addEventListener('change', function () {
     let j = 0;
     for (let i = 1; i < data.length; i++) {
       if (data[i][0] !== null) {
-        final.push({ 'group': "'" + data[i][0] + "'", 'team': [data[i][5]] });
+        console.log(data[i]);
+        final.push({ 'group': "'" + data[i][0] + "'", 'team': [data[i][7]] });
         if(i !== 1) {
           j++;
         }
       } else {
-        final[j].team.push(data[i][5]);
+        final[j].team.push(data[i][7]);
       }
       // console.log(data[i][0]);
       // console.log('index', i, data[i][5]);
