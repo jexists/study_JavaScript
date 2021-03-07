@@ -9,6 +9,8 @@ const rot13 = (str) => {
       solved += String.fromCharCode(asciiNum + 13);
     } else if (asciiNum >= 78 && asciiNum <= 90) {
       solved += String.fromCharCode(asciiNum - 13);
+    } else {
+      solved += str[i];
     }
   }
   return solved;
@@ -23,3 +25,4 @@ rot13('A');
 console.log(rot13('B')); //O
 console.log(rot13('C')); //P
 console.log(rot13('S')); //F
+console.log(rot13('SERR PBQR PNZC')); //FREE CODE CAMP
