@@ -1,16 +1,23 @@
 
 
 import { Point } from './point.js';
+import { Dialog } from './dialog.js';
 class App {
   constructor() {
     this.canvas = document.createElement('canvas');
     this.ctx = this.canvas.getContext('2d');
     document.body.appendChild(this.canvas);
 
-    thispixelRatio = window.devicePixelRatio > 1 ? 2 : 1;
+    this.pixelRatio = window.devicePixelRatio > 1 ? 2 : 1;
 
     this.mousePos = new Point();
     this.curItem = null;
+
+    this.items = [];
+    this.total = 1;
+    for (let i = 0; i < this.total; i++) {
+      this.items[i] = new Dialog();
+    }
 
     window.addEventListener('resize', this.resize.bind(this), false);
     this.resize();
@@ -31,11 +38,26 @@ class App {
 
     this.ctx.scale(this.pixelRatio, this.pixelRatio);
 
+    this.ctx.shadowOffsetX = 0;
+    this.ctx.shadowOffsetY = 3;
+    this.ctx.shadowBlur = 6;
+    this.ctx.shadowColor = 'rgba(0,0,0,0.1)';
+
+    this.ctx.lineWidth = 2;
+
+    for (let i = 0; i < this.items.length; i++) {
+      this.items[i].resize(this.stageWidth, this.stageWidth);
+    }
+
   }
 
   animate() {
     window.requestAnimationFrame(this.animate.bind(this))
     this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
+
+    for (let i = 0; i < this.items.length; i++) {
+      this.items[i].animate(this.ctx);
+    }
   }
 
   onDown(e) {
