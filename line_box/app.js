@@ -24,9 +24,9 @@ class App {
 
     window.requestAnimationFrame(this.animate.bind(this));
 
-    document.addEventListener('pointdown', this.onDown.bind(this), false);
-    document.addEventListener('pointmove', this.onMove.bind(this), false);
-    document.addEventListener('pointup', this.onUp.bind(this), false);
+    document.addEventListener('pointerdown', this.onDown.bind(this), false);
+    document.addEventListener('pointermove', this.onMove.bind(this), false);
+    document.addEventListener('pointerup', this.onUp.bind(this), false);
   }
 
   resize() {
@@ -46,7 +46,7 @@ class App {
     this.ctx.lineWidth = 2;
 
     for (let i = 0; i < this.items.length; i++) {
-      this.items[i].resize(this.stageWidth, this.stageWidth);
+      this.items[i].resize(this.stageWidth, this.stageHeight);
     }
 
   }
@@ -63,15 +63,33 @@ class App {
   onDown(e) {
     this.mousePos.x = e.clientX;
     this.mousePos.y = e.clientY;
+
+    for (let i = this.items.length - 1; i >= 0; i--) {
+      const item = this.items[i].down(this.mousePos.clone());
+      if (item) {
+        this.curItem = item;
+        const index = this.items.indexOf(item);
+        this.items.push(this.items.splice(index, 1)[0]);
+        break;
+      }
+    }
   }
 
   onMove(e) {
     this.mousePos.x = e.clientX;
     this.mousePos.y = e.clientY;
+
+    for (let i = 0; i < this.items.length; i++) {
+      this.items[i].move(this.mousePos.clone());
+    }
   }
 
   onUp(e) {
+    this.curItem = null;
 
+    for (let i = 0; i < this.items.length; i++) {
+      this.items[i].up();
+    }
   }
 
 

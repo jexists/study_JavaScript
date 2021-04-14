@@ -18,6 +18,7 @@ export class Dialog {
     this.startPos = new Point();
     this.mousePos = new Point();
     this.centerPos = new Point();
+    this.origin = new Point();
     this.rotation = 0;
     this.sideValue = 0;
     this.isDown = false;
@@ -31,6 +32,9 @@ export class Dialog {
   }
 
   animate(ctx) {
+    const move = this.target.clone().subtract(this.pos).reduce(FOLLOW_SPEED);
+    this.pos.add(move);
+
     ctx.beginPath();
     ctx.fillStyle = '#f4e55a';
     ctx.fillRect(this.pos.x, this.pos.y, WIDTH, HEIGHT);
