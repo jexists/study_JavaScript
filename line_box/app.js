@@ -14,7 +14,7 @@ class App {
     this.curItem = null;
 
     this.items = [];
-    this.total = 1;
+    this.total = 4; //상자갯수
     for (let i = 0; i < this.total; i++) {
       this.items[i] = new Dialog();
     }
@@ -57,6 +57,24 @@ class App {
 
     for (let i = 0; i < this.items.length; i++) {
       this.items[i].animate(this.ctx);
+    }
+
+    if (this.curItem) {
+      this.ctx.fillStyle = '#ff4338';
+      this.ctx.strokeStyle = '#ff4338';
+
+      this.ctx.beginPath();
+      this.ctx.arc(this.mousePos.x, this.mousePos.y, 8, 0, Math.PI * 2);
+      this.ctx.fill();
+
+      this.ctx.beginPath();
+      this.ctx.arc(this.curItem.centerPos.x, this.curItem.centerPos.y, 8, 0, Math.PI * 2);
+      this.ctx.fill();
+
+      this.ctx.beginPath();
+      this.ctx.moveTo(this.mousePos.x, this.mousePos.y);
+      this.ctx.lineTo(this.curItem.centerPos.x, this.curItem.centerPos.y);
+      this.ctx.stroke();
     }
   }
 
