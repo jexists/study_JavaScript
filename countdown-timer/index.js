@@ -1,5 +1,6 @@
 console.log('스크립트 연결 완료!')
 let countdown;
+const timerDisplay = document.querySelector('.display__time-left');
 
 function timer(seconds) {
   const now = Date.now();
@@ -23,13 +24,15 @@ function timer(seconds) {
   }, 1000);
 }
 
-timer(3);
+timer(124);
 
 function displayTimeLeft(seconds) {
-  console.log(seconds);
+  // console.log(seconds);
   // const minutes = seconds / 60;
-  console.log({minutes});
+  // console.log({minutes});
   const minutes = Math.floor(seconds / 60);
   const remainderSeconds = seconds % 60;
+  const display = `${minutes}:${remainderSeconds < 10 ? '0':''}${remainderSeconds}`
+  timerDisplay.textContent = display;
 }
 // function 
