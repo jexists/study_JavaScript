@@ -14,3 +14,23 @@ body {
   align-items: center;
   flex-direction: column;
 }
+
+.stempObj:nth-child(1){
+  top: 20px;
+  left: 20px;
+}
+.stempObj:nth-child(2){
+  top: 20px;
+  left: 150px;
+}
+.stempObj:nth-child(3){
+  top: 20px;
+  left: 300px;
+}
+.stempObj{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+  background-color: #fff;
+}
